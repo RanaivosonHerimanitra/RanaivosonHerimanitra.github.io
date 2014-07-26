@@ -35,42 +35,42 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">rCharts and shiny</a>
-          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/presentation/">Interactive presentation</a>
-          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/collecta/">Facebook (Malagasy only)</a>
+          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">       rCharts and shiny</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/presentation/">
+          Interactive presentation</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/collecta/">
+          Facebook (Malagasy only)</a>
           <a class="blog-nav-item" href="#">WAVES</a>
           <a class="blog-nav-item" href="#">Econometrics</a>
           <a class="blog-nav-item" href="#">Miscalleneous</a>
         </nav>
       </div>
     </div>
-
     <div class="container">
-
       <div class="blog-header">
         <h1 class="blog-title">Getting started with rCharts</h1>
         <p class="lead blog-description">A zoom on highcharts.js</p>
       </div>
-
       <div class="row">
-
         <div class="col-sm-8 blog-main">
-
           <div class="blog-post">
             <h2 class="blog-post-title">Introduction</h2>
-            <p class="blog-post-meta">August 1, 2014 by <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a></p>
-
-            <p>rCharts is an R package written by <a href="https://github.com/ramnathv/rCharts">Ramnath Vaidyanathan</a> 
-               that wraps powerful javascript
-               interactive charts libraries. It encompasses highcharts.js , Morris.js ,  Polychart.js, NVD3 and 
-               xCharts from D3js, Rickshaw and even Leaflet   
+            <p class="blog-post-meta">August 1, 2014 by 
+            <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-            <hr>
+            <p>rCharts is an R package written by 
+            <a href="https://github.com/ramnathv/rCharts">Ramnath Vaidyanathan</a> 
+               that wraps powerful javascript
+               interactive charts libraries. It encompasses highcharts.js , 
+               Morris.js ,  Polychart.js, NVD3 and 
+               xCharts from D3js, Rickshaw and even Leaflet.   
+            </p>
             <p>I'll particularly focus on highcharts.js in this blog because I find 
                it very nice!
             </p>
+            <hr>           
            <!-- <blockquote>
-              <p>Curabitur blandit tempus porttitor. <strong>Nullam quis risus eget urna mollis</strong> ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+              <p><strong></strong></p>
             </blockquote>-->
             <h2>Installing rCharts</h2>
             <p>You can install rCharts using the following commands:</p>
@@ -81,20 +81,45 @@ install_github('rCharts', 'ramnathv')</code></pre>
             <p>You can use wrapper functions to build interactive charts but also slightly
               lower level syntaxes to understand details behind charts.
             </p>
-            <p>Let'see how to build simple piechart using highcharts</p>
-            <p>this piechart display distribution of species in Iris dataset rom base R installation</p>
+            <h4>Pie chart:</h4>
+            <p>Let's see how to build simple piechart using highcharts.</p>
+            <p>Output displays distribution of species in Iris dataset</p>
             <ul>
-              <li>First, you need to declare new higcharts object using <pre><code>a=Highcharts$new()</code></pre></li>
-              <li>then, you may need to prepare your data:
-                  
-                  <pre><code>x=unique(as.character(iris$Species))
-y=as.numeric(table(iris$Species))</code></pre>   
+              <li>First, you need to declare new higcharts object: 
+              <pre><code>a=Highcharts$new()</code></pre>
               </li>
-              <li>you may add some title <pre><code> a$title(text = "Number of Species in Iris dataset")</code></pre></li>
+              <li>rCharts needs to know the quantitative variable
+              whose distribution will be plotted and values of this
+              distribution:
+                  <pre><code>data(iris)
+x=unique(as.character(iris$Species))
+y=as.numeric(table(iris$Species))</code></pre>                    
+              </li>
+              <li>You may add some title 
+              <pre><code>a$title(text = "Number of Species in Iris dataset")</code></pre>
+              </li>
             </ul>
-            <p>Finally, put your data in the correct way by specifying the type of chart (in this case a pie chart)
+            <p>Finally, specify <code>x-value</code> and <code>y-value</code> 
+            and the chart type (in this case a pie chart)
             <pre><code>a$data(type='pie',x=x,y=y)</code></pre> then call <code>a</code>
             </p>
+            <h4>Multiple lines</h4>
+            <p>Let's see how to build multiple lines using highcharts and
+               Iris dataset.
+            </p>
+            <p>In this case, multiple lines correspond to <code>sepal length</code>
+              and <code>sepal width</code> variables for each observation.
+            </p>
+            <pre><code>a = Highcharts$new()
+a$title(text = "Comparison of Sepal")
+a$xAxis(title=list(text="Observations") )
+a$series(name="Sepal width", data= iris$Sepal.width )
+a$series(name="Sepal length", data= iris$Sepal.length )
+a</code></pre>
+          <p>You can see from the above code that text in <code>xAxis</code>
+            can be specified. We have also the <code>series</code> 
+            attribute which takes arguments such as <em>name</em> and <em>data</em>.
+          </p>
           </div><!-- /.blog-post -->
 
       <!--    <div class="blog-post">
@@ -141,8 +166,11 @@ fermentum massa justo sit amet risus.</p>
 
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
           <div class="sidebar-module sidebar-module-inset">
-            <h4>About</h4>
-            <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            <h4>About me</h4>
+            <p>Herimanitra RANAIVOSON</br>
+               Principal Survey Statistician</br>
+               Data Scientist
+            </p>
           </div>
           <div class="sidebar-module">
             <h4>Archives</h4>
@@ -152,7 +180,7 @@ fermentum massa justo sit amet risus.</p>
             </ol>
           </div>
           <div class="sidebar-module">
-            <h4>Elsewhere</h4>
+            <h4>Useful links</h4>
             <ol class="list-unstyled">
               <li><a href="#">GitHub</a></li>
               <li><a href="#">Twitter</a></li>
@@ -194,7 +222,14 @@ fermentum massa justo sit amet risus.</p>
 <param name="quality" value="best">         
 <param name="bgcolor" value="#ffffff">         
 <param name="wmode" value="transparent">         
-<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         <embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff" name="global-zeroclipboard-flash-bridge" allowscriptaccess="sameDomain" allowfullscreen="false" type="application/x-shockwave-flash" wmode="transparent" pluginspage="http://www.macromedia.com/go/getflashplayer" flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com" scale="exactfit" height="100%" width="100%">                
+<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         
+<embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff"   name="global-zeroclipboard-flash-bridge" 
+allowscriptaccess="sameDomain" 
+allowfullscreen="false" 
+type="application/x-shockwave-flash" 
+wmode="transparent" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" 
+flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com"  scale="exactfit" height="100%" width="100%">                
 </object>
 </div>
 </body>
