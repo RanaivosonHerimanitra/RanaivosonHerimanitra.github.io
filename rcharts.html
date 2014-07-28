@@ -7,15 +7,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-
+    
     <title>rCharts</title>
+<link href="css/syntax.css" type="text/css" rel="stylesheet" />
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/blog.css" rel="stylesheet">
-
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -29,7 +29,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   <style type="text/css" id="holderjs-style"></style></head>
-
+<link href="css/twitter-bootstrap.css" rel="stylesheet" />
   <body>
 
     <div class="blog-masthead">
@@ -78,29 +78,30 @@
             </blockquote>-->
             <h2>Installing rCharts</h2>
             <p>You can install rCharts using the following commands:</p>
-            <pre><code>require(devtools)
+            <pre><code calss="r">require(devtools)
 install_github('rCharts', 'ramnathv')</code></pre>
             <p>you may wait a minute as it does not show download progress</p>
             <h3>rCharts low-level syntax</h3>
-            <p>You can use wrapper functions to build interactive charts but also slightly
-              lower level syntaxes to understand details behind charts.
+            <p>You can use wrapper functions to build interactive charts as well as
+            slightly lower level syntaxes to understand details behind charts.
             </p>
-            <h4>Pie chart:</h4>
+            <h3>Pie chart:</h3>
             <p>Let's see how to build simple piechart using highcharts.</p>
             <p>Output displays distribution of species in Iris dataset</p>
             <ul>
-              <li>First, you need to declare new higcharts object: 
-              <pre><code>a=Highcharts$new()</code></pre>
+              <li>First, you need to instantiate new higcharts object: 
+              <pre><code class="r">a=Highcharts$new()</code></pre>
               </li>
               <li>rCharts needs to know the quantitative variable
               whose distribution will be plotted and values of this
               distribution:
-                  <pre><code>data(iris)
+                  <pre><code class="r">data(iris)
 x=unique(as.character(iris$Species))
 y=as.numeric(table(iris$Species))</code></pre>                    
               </li>
               <li>You may add some title 
-              <pre><code>a$title(text = "Number of Species in Iris dataset")</code></pre>
+              <pre><code class="r">a$title(text = "Number of Species in Iris dataset")
+              </code></pre>
               </li>
             </ul>
             <p>Finally, specify <code>x-value</code> and <code>y-value</code> 
@@ -114,7 +115,7 @@ y=as.numeric(table(iris$Species))</code></pre>
             <p>In this case, multiple lines correspond to <code>sepal length</code>
               and <code>sepal width</code> variables for each observation.
             </p>
-            <pre><code>a = Highcharts$new()
+            <pre><code class="r">a = Highcharts$new()
 a$title(text = "Comparison of Sepal")
 a$xAxis(title=list(text="Observations") )
 a$series(name="Sepal width", data= iris$Sepal.width )
@@ -136,19 +137,18 @@ a</code></pre>
           <p>One can also define customized color in the <code>color</code>
             argument of <code>a$data(...)</code>
           </p>
-          <code><pre>
-            a = Highcharts$new()
-            a$chart(type="scatter")
-            a$title(text = "Sepal vs Petal by species")
-            a$xAxis(title=list(enabled=TRUE,text=input$x[1]))
-            a$yAxis(title=list(enabled=TRUE,text=input$y[1]))
-            a$data(name="setosa",color= "rgba(223, 83, 83,.5)",
-            x=iris[as.character(iris$Species)=='setosa',input$x[1]],y=iris[as.character(iris$Species)=='setosa',input$y[1]])
-            a$data(name='versicolor',color= "rgba(119, 152, 191, .5)",
-            x=iris[as.character(iris$Species)=="versicolor",input$x[1]],y=iris[as.character(iris$Species)=="versicolor",input$y[1]])
-            a$data(name="virginica",x=iris[as.character(iris$Species)=="virginica",
-            input$x[1]],y=iris[as.character(iris$Species)=="virginica",input$y[1]])
-          </pre></code>
+          <pre><code class="r">a = Highcharts$new()
+a$chart(type="scatter")
+a$title(text = "Sepal vs Petal by species")
+a$xAxis(title=list(enabled=TRUE,text=input$x[1]))
+a$yAxis(title=list(enabled=TRUE,text=input$y[1]))
+a$data(name="setosa",color= "rgba(223, 83, 83,.5)",
+x=iris[as.character(iris$Species)=='setosa',input$x[1]],y=iris[as.character(iris$Species)=='setosa',input$y[1]])
+a$data(name='versicolor',color= "rgba(119, 152, 191, .5)",
+x=iris[as.character(iris$Species)=="versicolor",input$x[1]],y=iris[as.character(iris$Species)=="versicolor",input$y[1]])
+a$data(name="virginica",x=iris[as.character(iris$Species)=="virginica",
+input$x[1]],y=iris[as.character(iris$Species)=="virginica",input$y[1]])
+</code></pre>
           </div><!-- /.blog-post -->
 
       <!--    <div class="blog-post">
@@ -233,11 +233,18 @@ fermentum massa justo sit amet risus.</p>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/docs.js"></script>
-  
-
+    <script src="js/prettify.js"></script>
+    <script src="js/lang-r.js"></script>
+    <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint ";
+    }
+    prettyPrint();
+  </script>
 <div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" 
     class="global-zeroclipboard-container" 
     id="global-zeroclipboard-html-bridge">      
