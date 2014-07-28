@@ -68,6 +68,10 @@
             <p>I'll particularly focus on highcharts.js in this blog because I find 
                it very nice!
             </p>
+            <p>Don't hesitate to explore a complete 
+               <a href="https://herimanitra.shinyapps.io/myrcharts0/">live examples</a>
+               of the tutorial here.
+            </p>
             <hr>           
            <!-- <blockquote>
               <p><strong></strong></p>
@@ -120,6 +124,31 @@ a</code></pre>
             can be specified. We have also the <code>series</code> 
             attribute which takes arguments such as <em>name</em> and <em>data</em>.
           </p>
+          <h4>Scatter plot</h4>
+          <p>Scatter plot is often used to visualize relationship between 2
+            variables. In this tutorial, we examine correlation between petal and sepal
+            width for each of the 3 plant species in Iris dataset.
+          </p>
+          <p>Nothing special on code side except you need to specify
+            the chart type (scatter). Also, you need to repeat 3-times
+            <code>a$data(...)</code> as it involves 3 different scatter chart
+          </p>
+          <p>One can also define customized color in the <code>color</code>
+            argument of <code>a$data(...)</code>
+          </p>
+          <code><pre>
+            a = Highcharts$new()
+            a$chart(type="scatter")
+            a$title(text = "Sepal vs Petal by species")
+            a$xAxis(title=list(enabled=TRUE,text=input$x[1]))
+            a$yAxis(title=list(enabled=TRUE,text=input$y[1]))
+            a$data(name="setosa",color= "rgba(223, 83, 83,.5)",
+            x=iris[as.character(iris$Species)=='setosa',input$x[1]],y=iris[as.character(iris$Species)=='setosa',input$y[1]])
+            a$data(name='versicolor',color= "rgba(119, 152, 191, .5)",
+            x=iris[as.character(iris$Species)=="versicolor",input$x[1]],y=iris[as.character(iris$Species)=="versicolor",input$y[1]])
+            a$data(name="virginica",x=iris[as.character(iris$Species)=="virginica",
+            input$x[1]],y=iris[as.character(iris$Species)=="virginica",input$y[1]])
+          </pre></code>
           </div><!-- /.blog-post -->
 
       <!--    <div class="blog-post">
