@@ -95,8 +95,9 @@ install_github('rCharts', 'ramnathv')</code></pre>
               <li>rCharts needs to know the quantitative variable
               whose distribution will be plotted and values of this
               distribution:
-                  <pre><code class="r">data(iris)
-x=unique(as.character(iris$Species))
+                  <pre><code class="r">data(iris)</br>
+iris$Species=as.character(iris$Species)</br>
+x=unique(iris$Species)</br>
 y=as.numeric(table(iris$Species))</code></pre>                    
               </li>
               <li>You may add some title 
@@ -115,12 +116,12 @@ y=as.numeric(table(iris$Species))</code></pre>
             <p>In this case, multiple lines correspond to <code>sepal length</code>
               and <code>sepal width</code> variables for each observation.
             </p>
-            <pre><code class="r">a = Highcharts$new()
-a$title(text = "Comparison of Sepal")
-a$xAxis(title=list(text="Observations") )
-a$series(name="Sepal width", data= iris$Sepal.width )
+            <pre><code class="r">a = Highcharts$new()</br>
+a$title(text = "Comparison of Sepal")</br>
+a$xAxis(title=list(text="Observations") )</br>
+a$series(name="Sepal width", data= iris$Sepal.width )</br>
 a$series(name="Sepal length", data= iris$Sepal.length )
-a</code></pre>
+</code></pre>
           <p>You can see from the above code that text in <code>xAxis</code>
             can be specified. We have also the <code>series</code> 
             attribute which takes arguments such as <em>name</em> and <em>data</em>.
@@ -132,23 +133,79 @@ a</code></pre>
           </p>
           <p>Nothing special on code side except you need to specify
             the chart type (scatter). Also, you need to repeat 3-times
-            <code>a$data(...)</code> as it involves 3 different scatter chart
+            <code>a$data(...)</code> as 3 different scatter plot are involved here.
           </p>
           <p>One can also define customized color in the <code>color</code>
             argument of <code>a$data(...)</code>
           </p>
-          <pre><code class="r">a = Highcharts$new()
-a$chart(type="scatter")
-a$title(text = "Sepal vs Petal by species")
-a$xAxis(title=list(enabled=TRUE,text=input$x[1]))
-a$yAxis(title=list(enabled=TRUE,text=input$y[1]))
+          <pre><code class="r">a = Highcharts$new()</br>
+a$chart(type="scatter")</br>
+a$title(text = "Sepal vs Petal by species")</br>
+a$xAxis(title=list(text="Sepal"))</br>
+a$yAxis(title=list(text="Petal"))</br>
 a$data(name="setosa",color= "rgba(223, 83, 83,.5)",
-x=iris[as.character(iris$Species)=='setosa',input$x[1]],y=iris[as.character(iris$Species)=='setosa',input$y[1]])
+x=iris[iris$Species=='setosa',"Sepal"
+y=iris[iris$Species=='setosa',"Petal.Length"])</br>
 a$data(name='versicolor',color= "rgba(119, 152, 191, .5)",
-x=iris[as.character(iris$Species)=="versicolor",input$x[1]],y=iris[as.character(iris$Species)=="versicolor",input$y[1]])
-a$data(name="virginica",x=iris[as.character(iris$Species)=="virginica",
-input$x[1]],y=iris[as.character(iris$Species)=="virginica",input$y[1]])
+x=iris[iris$Species=="versicolor","Sepal.Length"],
+y=iris[iris$Species=="versicolor","Petal.Length"])</br>
+a$data(name="virginica",x=iris[iris$Species=="virginica","Sepal.Length"],
+       y=iris[iris$Species=="virginica","Petal.Length"])
 </code></pre>
+<h4>Scatter plot + fitted values from regression line</h4>
+ <ul>
+              <li>The first thing you need to do is to prepare data</li>
+</ul>
+<p>3 regression tasks are conducted for each species then
+<code>x-value</code> and <code>fitted values</code> are store withing a list</p>
+<pre><code class="r">
+lm_setosa=lm(Sepal.Length~Petal.Length,data=iris[iris$Species=='setosa',])
+lm_versicolor=lm(Sepal.Length~Petal.Length,data=iris[iris$Species=='versicolor',])
+lm_virginica=lm(Sepal.Length~Petal.Length,data=iris[iris$Species=='virginica',])</br>
+data_setosa=cbind(iris[iris$Species=='setosa',"Petal.Length"],lm_setosa$fit)
+data_versicolor=cbind(iris[iris$Species=='versicolor',"Petal.Length"],lm_versicolor$fit)
+data_virginica=cbind(iris[iris$Species=='virginica',"Petal.Length"],lm_virginica$fit)
+   
+    list_setosa=list()
+    for ( i in 1:nrow(data_setosa) ) {
+      list_setosa[[i]]=data_setosa[i,]
+    }
+    list_versicolor=list()
+    for ( i in 1:nrow(data_versicolor) ) {
+      list_versicolor[[i]]=data_versicolor[i,]
+    }
+    list_virginica=list()
+    for ( i in 1:nrow(data_setosa) ) {
+      list_virginica[[i]]=data_virginica[i,]
+    }
+    </code></pre>
+    <ul>
+      <li>After all, that are inserted into the chart
+        of type <code>line</code>.
+      </li>
+    </ul>
+    <pre><code class="r"> 
+    a = Highcharts$new()</br>
+    a$title(text="Sepal vs Petal by species(+ regression lines)")</br>
+    a$xAxis(min=min(iris[,input$x[1]]),title=list(text="Petal Length")</br>
+    a$yAxis(title=list(text="Sepal Length"))</br>
+    a$series(type='line',
+             name='fitted values setosa',color= 'rgba(223, 83, 83,.5)',data=list_setosa)</br>
+    #insertion</br>
+    a$series(type='line',
+        name='fitted values versicolor',color= 'rgba(119, 152, 191, .5)',data=list_versicolor)</br>
+    a$series(type='line',
+        name='fitted values virginica',data=list_virginica)</br>
+    a$data(type='scatter',name='setosa',color= 'rgba(223, 83, 83,.5)',
+          x=iris[iris$Species=='setosa',"Petal.Length"],
+          y=iris[iris$Species=='setosa',"Sepal.Length"])</br>
+    a$data(type='scatter',name='versicolor',color= 'rgba(119, 152, 191, .5)',
+          x=iris[iris$Species=='versicolor',"Petal.Length"],
+          y=iris[iris$Species=='versicolor',"Sepal.Length"])</br>
+    a$data(type='scatter',name='virginica',
+          x=iris[iris$Species=='virginica',"Petal.Length"],
+          y=iris[iris$Species=='virginica',"Sepal.Length"])
+    </code></pre>
           </div><!-- /.blog-post -->
 
       <!--    <div class="blog-post">
