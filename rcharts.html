@@ -129,7 +129,7 @@ a$series(name="Sepal length", data= iris$Sepal.length )
           <h4>Scatter plot</h4>
           <p>Scatter plot is often used to visualize relationship between 2
             variables. In this tutorial, we examine correlation between petal and sepal
-            width for each of the 3 plant species in Iris dataset.
+            length for each of the 3 plant species in Iris dataset.
           </p>
           <p>Nothing special on code side except you need to specify
             the chart type (scatter). Also, you need to repeat 3-times
@@ -205,6 +205,28 @@ data_virginica=cbind(iris[iris$Species=='virginica',"Petal.Length"],lm_virginica
     a$data(type='scatter',name='virginica',
           x=iris[iris$Species=='virginica',"Petal.Length"],
           y=iris[iris$Species=='virginica',"Sepal.Length"])
+    </code></pre>
+    <h4>Combo chart</h4>
+    <p>In this example, we will plot an histogram and a line chart
+      on the same graph.
+    </p>
+    <p>We are going to plot the <code>mean of sepal length by species</code>:</p>
+    <pre><code class="r">
+    #data preparation for the mean line:
+    x1=mean(iris[iris$Species=='setosa',"Sepal.Length"])
+    x2=mean(iris[iris$Species=='versicolor',"Sepal.Length"])
+    x3=mean(iris[iris$Species=='virginica',"Sepal.Length"])
+    x=cbind(x1,x2,x3)
+    # chart:
+    a = Highcharts$new()
+    a$chart(type = "column") #you can change to "bar"
+    a$title(text = "Mean Sepal length by species (+Average)")
+    a$xAxis(categories = unique(as.character(iris$Species)))
+    a$yAxis(title = list(text = "Sepal.Length"))
+    a$data(x,name='Mean')
+    a$series(type='spline',name='average'
+             ,data= x )
+    a
     </code></pre>
           </div><!-- /.blog-post -->
           <ul class="pager">
