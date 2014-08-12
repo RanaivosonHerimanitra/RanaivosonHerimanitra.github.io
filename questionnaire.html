@@ -57,7 +57,7 @@
         to speed up data collection, this post is for you. </br>
         I'll teach you my experience dealing with building complete 
         infrastructure for collecting data with smartphone or tablets.</br>
-        This post assumes that you have a linux OS installed on your machine.
+        This post assumes that you have a linux or Mac OS installed on your machine.
         </small>
           
         </p>
@@ -90,8 +90,9 @@
             </p>
             <p>
             When using an <code>input</code> tag in your html
-            remember not to forget its <code>id,name</code>
-            .<code>placeholder</code> may also be useful when
+            remember not to forget its <strong>attributes</strong> 
+            such as<code>id, name</code>
+            but also<code>placeholder</code> which is useful when
             you want to guide user a little bit.
             </p>
             <h3>select tag</h3>
@@ -100,7 +101,7 @@
               in advance.
             </p>
             <h2>jQuery Mobile template</h2>
-            <p>a typical jQuery mobile page is
+            <p>A typical jQuery mobile page is
               structured into 03 parts:
             </p>
             <ol>
@@ -108,13 +109,81 @@
                 <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;h1&gt Your header title here</span><span class="nt">&lt;/h1&gt</span></br><span class="nt">&lt;/div&gt;</span></code></pre>
               </li>
               <li>The content of the page:
-                <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span></br>...</br><span class="nt">&lt;/div&gt;</span></code></pre>
+                <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span></br>...</br><span class="nt">&lt;/div&gt;</span></code></pre>
               </li>
               <li>and finally a footer defined like this:
-                <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span><span class="nt">&gt;</span></br>...</br><span class="nt">&lt;/div&gt;</span></code></pre>
+                <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span><span class="na"> data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;p&gt All rights reserved 2014&lt;/p&gt;</span></br><span class="nt">&lt;/div&gt;</span></code></pre>
               </li>
             </ol>
+            <p>These 3 elements are embedded inside a <code>div</code> tag
+              that have a <code>data-role="page"</code> and a unique <code>id</code>.
+            </p>
+            <p>Now that you have set up your jQuery mobile page, let's
+              see in details these different elements.
+            </p>
+            <p><code>Input</code> tag can be controlled with its attributes:</p>
+            <pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myid&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;10&quot;</span><span class="na"> name=</span><span class="s">&quot;myname&quot;</span><span class="na"> type=</span><span class="s">&quot;numeric&quot;</span><span class="nt"> /&gt;</span></code></pre>
+            <p>In this above model, we define an input tag that can receive a maximum
+              10 digits and has a type numeric.
+            </p>
+            <p>You can control input behavior using <code>events</code> such as:</p>
+            <ul>
+              <li><code>onkeydown</code></li>
+              <li><code>onkeypress</code></li>
+              <li><code>...</code></li>
+            </ul>
+            <p>via Javascript. Let's see how to prevent user from
+              entering a character with this input:
+            </p>
+            <pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myid&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;10&quot;</span><span class="na"> name=</span><span class="s">&quot;myname&quot;</span><span class="na"> type=</span><span class="s">&quot;numeric&quot;</span><span class="na">
+            onkeypress=</span><span class="s">&quot;prevent_char(event,'myid');&quot;</span><span class="nt"> /&gt;</span></code></pre>
+            <p><code>prevent_char()</code> is a javascript function that I define
+              to prevent user to enter a character from an input tag given its
+              <code>id</code> after listening into events triggered by keyboards.
+              <pre><code>function prevent_char(event,id) {
+  if ( event.which>64 && event.which <91 ) {
+		$('#' + id).val("");	
+	}
+}</code></pre>
+            </p>
+            <p>You can do the opposite with <code>prevent_num</code>:
+            </p>
+            <pre><code>function prevent_num(event,id) {
+  if ( (event.which>48 && event.which <58) || (event.which>96 && event.which <106)  ) {
+		$('#'+ id ).val("");	
+	}
+}</code></pre>
+<p>I have also written my own autotabulation in order to improve user experience. I
+  defined a function called <code>next()</code>:
+  <pre><code>function next(name,target,length)
+{
+  var myname=document.getElementsByName(name)[0].value;
+	if ( myname.length==length-1 ) {
+		$('#'+target).focus();
+	}
+}</code></pre>
+<p><code>next()</code> has 03 arguments:</p>
+<ol>
+  <li>the name of the current tag where cursor is located</li>
+  <li>the targeted tag</li>
+  <li>and the length of the current tag</li>
+</ol>
+</p>
             <h2>Develop and host with Meteorjs (coming soon...)</h2>
+            <h3>What is Meteor?</h3>
+            <p>...</p>
+            <h3>Install Meteor:</h3>
+            <p>from the command line, type:</p>
+            <pre><code>$ curl https://install.meteor.com | /bin/sh</code></pre>
+            <p>create a project:</p>
+            <pre><code>meteor create questionnaire</code></pre>
+            <p>then run it locally:</p>
+            <pre><code>$ cd questionnaire
+$ meteor</code></pre>
+<p>Now , you need to replace generated html file and js file with
+  a template that use jQuery mobile. I recommend you download template provided by
+  <a href="">this link</a>
+</p>
           </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="#">Previous</a></li>
