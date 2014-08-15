@@ -55,8 +55,8 @@
         <p class="lead blog-description">
         <small>If you are a survey statistician exploring new technologies 
         to speed up data collection, this post is for you. </br>
-        I'll teach you my experience dealing with building complete 
-        infrastructure for collecting data with smartphone or tablets.</br>
+        I'll teach you my experience when I had to build a complete 
+        infrastructure for collecting data with tablets.</br>
         This post assumes that you have a linux or Mac OS installed on your machine.
         </small>
           
@@ -69,9 +69,7 @@
             <p class="blog-post-meta">August 10, 2014 by 
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-            <p>For a complete demo, look at this live example
-               <a href="http://herimanitra.meteor.com">here</a>
-            </p>           
+                     
             <p>Our user interface will be build using <a href="http://jquerymobile.com/">
             jQuery Mobile</a>. It is responsive, mobile first framework and easy to learn.
             </p>
@@ -121,6 +119,7 @@
             <p>Now that you have set up your jQuery mobile page, let's
               see in details these different elements.
             </p>
+            <hr>
             <p><code>Input</code> tag can be controlled with its attributes:</p>
             <pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myid&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;10&quot;</span><span class="na"> name=</span><span class="s">&quot;myname&quot;</span><span class="na"> type=</span><span class="s">&quot;numeric&quot;</span><span class="nt"> /&gt;</span></code></pre>
             <p>In this above model, we define an input tag that can receive a maximum
@@ -146,7 +145,7 @@
 	}
 }</code></pre>
             </p>
-            <p>You can do the opposite with <code>prevent_num</code>:
+            <p>You can do the opposite with <code>prevent_num()</code>:
             </p>
             <pre><code>function prevent_num(event,id) {
   if ( (event.which>48 && event.which <58) || (event.which>96 && event.which <106)  ) {
@@ -162,31 +161,93 @@
 		$('#'+target).focus();
 	}
 }</code></pre>
-<p><code>next()</code> has 03 arguments:</p>
+<p><code>next()</code> takes 03 arguments:</p>
 <ol>
   <li>the name of the current tag where cursor is located</li>
   <li>the targeted tag</li>
   <li>and the length of the current tag</li>
 </ol>
 </p>
-            <h2>Develop and host with Meteorjs (coming soon...)</h2>
+<hr>
+<p><code>select</code> tag, on the other hand, has slightly different syntax:</p>
+ <pre><code class="language-html" data-lang="html"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;myselecttagid&quot;</span><span class="na"> name=</span><span class="s">&quot;myselecttagname&quot;</span> data-native-menu=false </br>multiple=multiple<span class="nt">&gt;</span>
+<span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;&quot;</span> selected<span class="nt">&gt;&lt;/option&gt;</span>
+<span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;Label1&lt;/option&gt;</span>
+<span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;Label2&lt;/option&gt;</span>
+<span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;Label3&lt;/option&gt;</span>
+<span class="nt">&lt;/select&gt;</span></code></pre>
+<p>This select tag allow you to select more than one item (Label1,Label2,Label3). Depending on your need, you may remove <code>multiple=multiple</code> so that user can only 
+  select one item. To record value, you have 02 options:</p>
+<ul>
+  <li>record value(s) based on labels: <pre><code>$('myselecttagid option:selected').text();</code></pre>
+    and loop through all labels or
+  </li>
+  <li>record value(s) based on their code: <pre><code>$('myselecttagid option:selected').val();</code></pre>
+  and loop again</li>
+</ul>
+            <h2>Develop and host with Meteorjs</h2>
             <h3>What is Meteor?</h3>
             <p>...</p>
             <h3>Install Meteor:</h3>
             <p>from the command line, type:</p>
             <pre><code>$ curl https://install.meteor.com | /bin/sh</code></pre>
             <p>create a project:</p>
-            <pre><code>meteor create questionnaire</code></pre>
-            <p>then run it locally:</p>
-            <pre><code>$ cd questionnaire
-$ meteor</code></pre>
-<p>Now , you need to replace generated html file and js file with
+            <pre><code>$ meteor create questionnaire
+$ cd questionnaire</code></pre>
+<p>Add some javascript libraries:</p>
+<pre><code>$ meteor add jquery</code></pre>
+            <p>Inside <code>questionnaire</code> folder, edit the html file
+              normally called <code>questionnaire.html</code>
+            </p>
+            
+<!--<p>Now , you need to replace generated html file and js file with
   a template that use jQuery mobile. I recommend you download template provided by
   <a href="">this link</a>
+</p>-->
+<h2>Case Study</h2>
+<p>Let's build a mobile data-entry with 03 variables: <code>name</code>, <code>address</code> and a 
+<code>phone number</code> on single jquery-mobile page:
 </p>
+<p>First, you need to define a meteor <code>template</code> with its name from your html file:</p>
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span><span class="nt">&gt 
+{{>template_name}}
+&lt;/body&gt;</span></br>
+<span class="nt">&lt;template</span> <span class="na"> name=</span><span class="s">&quot;template_name&quot</span><span class="nt"> &gt
+<span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;header&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;h1&gt A mobile data-entry</span><span class="nt">&lt;/h1&gt</span></br><span class="nt">&lt;/div&gt;</span></br><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;content&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;p&gt Enter your name:</span><span class="nt">&lt;/p&gt</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myid&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;10&quot;</span><span class="na"> name=</span><span class="s">&quot;myname&quot;</span><span class="na"> type=</span><span class="s">&quot;text&quot;</span><span class="na">
+            onkeypress=</span><span class="s">&quot;prevent_num(event,'myid');&quot;</span><span class="nt"> /&gt;</span></br>
+<span class="nt">&lt;p&gt Enter your address:</span><span class="nt">&lt;/p&gt</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myaddress&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;10&quot;</span><span class="na"> name=</span><span class="s">&quot;myaddress_name&quot;</span><span class="na"> type=</span><span class="s">&quot;text&quot;</span><span class="na">
+            onkeypress=</span><span class="s">&quot;prevent_num(event,'myaddress');&quot;</span><span class="nt"> /&gt;</span></br>
+<span class="nt">&lt;p&gt Your phone number:</span><span class="nt">&lt;/p&gt</span>
+<span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myphoneid&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;15&quot;</span><span class="na"> name=</span><span class="s">&quot;myphone_number&quot;</span><span class="na"> type=</span><span class="s">&quot;numeric&quot;</span><span class="na">
+            onkeypress=</span><span class="s">&quot;prevent_char(event,'myphoneid');&quot;</span><span class="nt"> /&gt;</span>
+</br><span class="nt">&lt;/div&gt;</span></br><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span><span class="na"> data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;p&gt All rights reserved 2014&lt;/p&gt;</span></br><span class="nt">&lt;/div&gt;</span>
+&lt;/template&gt;</span></code></pre>
+<p>In Meteor, you do not need to specify the html tag, it is automatically managed by the server.</p>
+<p>Furthermore, all contents from <code>template_name</code> is loaded into the <code>body</code>
+  of the html by specifying <code>{{>template_name}}</code>.
+</p>
+<p>To run this code locally,type:</p>
+            <pre><code>$ meteor</code></pre>
+            <p>To deploy your app online, pick up a developper account in <a href="http://meteor.com" >Meteor website</a> then, in the command line, type:
+            </p>
+            <pre><code>$ meteor deploy <code>NameOfYourApp</code>.meteor.com</p></code></pre>
+            <p>For a complete demo, look at this live example
+               <a href="http://herimanitra.meteor.com">here</a>
+            </p>
+            <h2>Where collected data are stored?</h2>
+            <p>Data are stored in the cloud.</p>
+            <p>They can be retrieved using the command line and from mongoHQ website
+              as data are stored in <code>bson</code> format (the native format of
+              mongo database).
+            </p>
+            <p>To obtain the url, type:</p>
+            <pre><code>$ meteor mongo --url <code>NameOfYourApp</code>.meteor.com</code></pre>
+            <p>You will then get an address that you have to copy <a href="https://mongohq.com">here</a></p>
           </div><!-- /.blog-post -->
           <ul class="pager">
-            <li><a href="#">Previous</a></li>
+            <li><a href="http://ranaivosonherimanitra.github.io/index.html">Previous</a></li>
             <li><a href="#">Next</a></li>
           </ul>
         </div><!-- /.blog-main -->
