@@ -187,7 +187,8 @@
 </ul>
             <h2>Develop and host with Meteorjs</h2>
             <h3>What is Meteor?</h3>
-            <p>...</p>
+            <blockquote>Meteor is an open-source platform for building 
+            top-quality web apps in a fraction of the time.</blockquote>
             <h3>Install Meteor:</h3>
             <p>from the command line, type:</p>
             <pre><code>$ curl https://install.meteor.com | /bin/sh</code></pre>
@@ -245,6 +246,17 @@ $ cd questionnaire</code></pre>
             <p>To obtain the url, type:</p>
             <pre><code>$ meteor mongo --url <code>NameOfYourApp</code>.meteor.com</code></pre>
             <p>You will then get an address that you have to copy <a href="https://mongohq.com">here</a></p>
+          <!--  <script src="https://gist.github.com/arunoda/4cbf29357ff6547a1608.js">
+</script>
+<pre><code class="language-js">// app.js
+Posts = new Meteor.Collection('posts');
+
+if(Meteor.isClient) {
+  Template.postList.posts = function () {
+    return Posts.find();
+  };
+}
+</code></pre> -->
           </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="http://ranaivosonherimanitra.github.io/index.html">Previous</a></li>
