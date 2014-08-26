@@ -63,9 +63,8 @@
       <div class="row">
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
-            <h2 class="blog-post-title">Sign up with a developper account</h2>        
-            <p>First of all, you need to <a href="https://developers.facebook.com">sign up</a> with a facebook developer account 
-            to access the graph API.
+            <h2 class="blog-post-title">Sign in with the facebook developper interface</h2>        
+            <p>First of all, you need to <a href="https://developers.facebook.com/apps/">sign in</a> to the facebook developer interface to access the graph API.
             </p>
             <blockquote>
             The Graph API is the primary way to get data in and out of Facebook's social graph. 
@@ -77,11 +76,36 @@
             </p>-->
             <h2>Create an app</h2>
             <p>Second, you will need to create an application to extract these information.</p>
-            <p></p>
+            <p>On the right side of the screen, click on the green <code>Create New app</code> button:</p>
+            <img src="images/developer.png" style="max-height: 700px; max-width: 600px;" />
+            </br>
+            <p>After the app have been created:</p>
+            <ol>
+              <li>Go to settings and fill in<code>Contact Email</code></li>
+              <li>Add a<code>platform</code> and select <code>Website</code></li>
+              <li>Fill in the Site url with <code>http://localhost:1410/</code> then
+                save changes.
+              </li>
+            </ol>
+            <p>To finalize your settings, pick up the <code>app Id</code> and <code>app secret</code> from
+            the app dashboard then paste it into your R script:</p>
+            <pre><code>fbOAuth(app_id="your app id here", 
+                               app_secret="your app secret here", 
+                               extended_permissions = TRUE)
+</code></pre>
+<p>Note that you will need to install and load the <a href="http://cran.r-project.org/web/packages/Rfacebook/">Rfacebook</a> package as It provides a bunch of
+  useful functions to facilitate interaction with to the facebook API.
+</p>
+<p>Now your R script is able to communicate with the Graph API of facebook.</p>
+
             <h2>Case study</h2>
-            <p>I started with a project that extract all public posts mentionning some of the
-            most known Malagasy politicians then put them in a <a href="http://www.datatables.net/">datatable</a>
+            <p>I started with <a href="https://herimanitra.shinyapps.io/collecta/">
+            a project</a> that extract all public posts mentionning some of the
+            most known Malagasy politicians then put them into a
+            <a href="http://www.datatables.net/">datatable</a>,
+            posters and their profile pictures are also displayed.
             </p>
+            <p>Enjoy!</p>
       </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="#">Previous</a></li>
@@ -104,11 +128,11 @@
             </ol>
           </div>
           <div class="sidebar-module">
-            <h4>Useful links</h4>
+            <h4>Useful resources:</h4>
             <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
-              <li><a href="#">Twitter</a></li>
-              <li><a href="#">Facebook</a></li>
+              <li><a href="http://decisionstats.wordpress.com/2014/05/10/analyzing-facebook-networks-using-rstats/">decisionstats</a></li>
+              <li><a href="https://github.com/pablobarbera/Rfacebook">Rfacebook project on GitHub</a></li>
+              
             </ol>
           </div>
         </div><!-- /.blog-sidebar -->
