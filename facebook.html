@@ -79,7 +79,7 @@
             <p>On the right side of the screen, click on the green <code>Create New app</code> button:</p>
             <img src="images/developer.png" style="max-height: 700px; max-width: 600px;" />
             </br>
-            <p>After the app have been created:</p>
+            <p>After the app has been created:</p>
             <ol>
               <li>Go to settings and fill in<code>Contact Email</code></li>
               <li>Add a<code>platform</code> and select <code>Website</code></li>
@@ -88,13 +88,13 @@
               </li>
             </ol>
             <p>To finalize your settings, pick up the <code>app Id</code> and <code>app secret</code> from
-            the app dashboard then paste it into your R script:</p>
+            the app dashboard then paste them into your R script:</p>
             <pre><code>fbOAuth(app_id="your app id here", 
                                app_secret="your app secret here", 
                                extended_permissions = TRUE)
 </code></pre>
 <p>Note that you will need to install and load the <a href="http://cran.r-project.org/web/packages/Rfacebook/">Rfacebook</a> package as It provides a bunch of
-  useful functions to facilitate interaction with to the facebook API.
+  useful functions to facilitate interaction with the facebook API.
 </p>
 <p>Now your R script is able to communicate with the Graph API of facebook.</p>
 
