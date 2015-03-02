@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    
+    <title>datascience</title>
+<link href="css/syntax.css" type="text/css" rel="stylesheet" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css" id="holderjs-style"></style></head>
+<link href="css/twitter-bootstrap.css" rel="stylesheet" />
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">       rCharts and shiny</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/presentation/">
+          Interactive presentation</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/collecta/">
+          Facebook (Malagasy only)</a>
+          <a class="blog-nav-item" href="#">WAVES</a>
+          <a class="blog-nav-item" href="#">Econometrics</a>
+          <a class="blog-nav-item" href="#">Miscalleneous</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">La science des données aux services des Entreprises</h1>
+        <p class="lead blog-description">Ce que les données peuvent faire pour vous</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title"></h2>
+            <p class="blog-post-meta">February 02, 2015 by 
+            <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
+            </p>
+            <p>Vous disposez d'une masse de données sur vos clients, sur vos ventes, vos factures,
+              les historiques d'appels, etc. Vous avez marre de ces rapports trimestriels qui
+              disent toujours la même chose ou presque. Je vous invite à lire à ce poste et à découvrir
+              comment ces données peuvent servir à améliorer votre business et votre entreprise.
+            </p>
+            <p>Gérer une entreprise c'est géré ses clients. Plus de clients est synonyme d'augmentation de 
+              profits pour l'entreprise. L'augmentation de profits peut passer par: 
+            </p>
+            <ol>
+              <li>L'augmentation du nombre de clients.</li>
+               <li>Mieux servir les clients.</li>
+                <li>Servir les clients plus efficacement.</li>
+            </ol>
+            <p>La science des données peut aider le Marketing "traditionel" dans ces 03 directions en utilisant les techniques appelées
+              <strong>Apprentissage Automatique de la Machine</strong> ou Machine Learning (ML). Un example est de prédire
+              si un client à qui on présente un produit A peut avoir un intéret pour ce produit ou pas. Pour cela, les techniques
+              de ML ont besoin d'examples comme des historiques de clients qui ont déjà acheté les mêmes produits, 
+              leurs caractéristiques et bien d'autres.
+            <p>L'analyse de ces exemples permettent de dégager des structures cachées i.e non visible à l'oeil nu et dont l'intuition
+             du Marketeur ne saurait deviner (du moins en un laps de temps raisonnable). Or le temps c'est de l'argent! </p>
+             <p>La connaissance de ces structures cachées permettent alors de faire de la prédiction sur des variables d'intérêt.
+              Nous allons détailler comment ces prédictions peuvent servir dans un contexte de Business</p>
+            <hr>           
+            <h2>Augmentation du nombre de clients:</h2>
+            <p>Il existe 02 facteurs qui affectent le nombre de clients:</p>
+            <ul>
+               <li><strong>Ceux qui arrivent</strong></li>
+               <li><strong>Ceux qui partent</strong></li>
+            </ul>
+            <p>Il est important, dans l'entreprise, de pouvoir anticiper la perte de client ou <strong>churn</strong> afin d'intervenir
+            au moment opportun. A cet effet, on aura besoin des historiques de clients, leurs interactions avec
+            les différents produits de la société et pour chaque client, on regarde la probabilité qu'il se désabonne
+            ou ne consomme plus un produit donné.</p>
+            <p>Les clients les plus "importants" mais qui présentent un risque de quitter seront solliciter à travers des offres
+            spéciales ou ciblées à leur propre besoins.</p>
+            <p>Il est aussi important de quantifier l'apport des nouveaux clients dans le profit de l'entreprise et ainsi de prédire
+            le revenu futur de l'entreprise en utilisant les données clients. C'est ce qu'on appelle le <strong>lead scoring</strong></p>
+            <p>Avec la science des données, on peut également prédire le retour sur investissement d'une campagne publicitaire.
+            En effet, le Data Scientist peut observer l'effet de la campagne publicitaire sur les indicateurs de l'entreprise.</p>
+            <hr>           
+            <h2>Mieux servir ses clients:</h2>
+            <p>Servir ses clients c'est leur proposer des produits et services pour lesquels ils sont suceptibles d'être intéréssé 
+            mais surtout adaptés à leur budget. A cet effet, on utilise des indicateurs de ventes sur le couple produit client de 
+            tel sorte que lorsqu'un nouveau produit est lancé, qu'on puisse cibler au mieux les consommateurs potentiels.
+            </p>
+            <p>On peut également essayer d'optimiser les prix des produits en analysant leur caractéristiques avec
+            le nombre des ventes. Ainsi, on pourra quantifier l'impact sur le revenu (Prix x Nombre de ventes) 
+            d'un changement de caractéristiques des produits et voir quelle combinaison de produits et de prix serait la plus
+            adaptée.</p>
+            <hr>           
+            <h2>Servir ses clients plus efficacement:</h2>
+            <p>Ici, on veut améliorer les opérations de l'entreprise afin de diminuer le coût.
+             Bien souvent,servir les clients plus efficament se traduit par bien les servir. Etre capable
+              d'anticiper les besoins et les problèmes des clients vis à vis des services ou biens fournis
+              par l'entreprise.Bien entendu, on aura une nouvelle fois besoin de données.</p>
+            <p>Une des taches les plus importantes, dans ce domain est de prédire la demande pour un produit ou un service.
+            Une entreprise qui vend des biens périssables,doit optimiser ses stocks pour ne pas se retrouver 
+            en situation de surproduction en période de faible demande ou en rupture de stock en période de fête par exemple.     
+            </p>
+          </div><!-- /.blog-post -->
+          <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About me</h4>
+            <p>Herimanitra RANAIVOSON</br>
+               Principal Survey Statistician</br>
+               Data Scientist
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">September 2014</a></li>
+              <li><a href="#">August 2014</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Useful links</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">GitHub</a></li>
+              <li><a href="https://twitter.com/air_manitra">Twitter</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>powered by bootstrap</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/docs.js"></script>
+    <script src="js/prettify.js"></script>
+    <script src="js/lang-r.js"></script>
+    <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint ";
+    }
+    prettyPrint();
+  </script>
+<div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" 
+    class="global-zeroclipboard-container" 
+    id="global-zeroclipboard-html-bridge">      
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+       id="global-zeroclipboard-flash-bridge" height="100%" width="100%">         
+<param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1406352734117">         
+<param name="allowScriptAccess" value="sameDomain">         
+<param name="scale" value="exactfit">         
+<param name="loop" value="false">         
+<param name="menu" value="false">         
+<param name="quality" value="best">         
+<param name="bgcolor" value="#ffffff">         
+<param name="wmode" value="transparent">         
+<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         
+<embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff"   name="global-zeroclipboard-flash-bridge" 
+allowscriptaccess="sameDomain" 
+allowfullscreen="false" 
+type="application/x-shockwave-flash" 
+wmode="transparent" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" 
+flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com"  scale="exactfit" height="100%" width="100%">                
+</object>
+</div>
+</body>
+</html>
