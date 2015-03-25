@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    
+    <title>WAVES</title>
+<link href="css/syntax.css" type="text/css" rel="stylesheet" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css" id="holderjs-style"></style></head>
+<link href="css/twitter-bootstrap.css" rel="stylesheet" />
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">WAVES</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/presentation/">
+          Interactive presentation</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/collecta/">
+          Facebook (Malagasy only)</a>
+          <a class="blog-nav-item" href="#">WAVES</a>
+          <a class="blog-nav-item" href="#">Econometrics</a>
+          <a class="blog-nav-item" href="#">Miscalleneous</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">Forests area calculation and timber volume estimation in Madagascar</h1>
+        <p class="lead blog-description">Wealth Accounting and the Valuation of Ecosystem Services (WAVES)</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title"></h2>
+            <p class="blog-post-meta">March 25, 2015 by 
+            <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
+            </p>
+            <p>Recently, I participated in a training organized by <a href="rmsi.com">consultants</a>
+              in charge of estimating timber volume in Madagascar using remote sensing techniques.</p> 
+             <p>First step of their work consisted of collecting and processing large
+              <a href="http://earthexplorer.usgs.gov/">landsat images</a> (36 in total covering period 2005 to 2013).
+             </p>
+             <p>Output of the studies are:</p>
+             <ul>
+              <li>Forest cover land use</li>
+              <li>Change detection of forest cover land use</li>
+              <li>Timber volume estimation using allometric equations (<a href="http://en.wikipedia.org/wiki/Normalized_Difference_Vegetation_Index">NDVI</a>)</li>
+             </ul>
+             <h3>Forest cover land use estimation</h3>
+             <p>They applied <a href="https://www.youtube.com/watch?v=024ogEKpofw"><strong>unsupervised classification</strong></a>  
+              to form homogeneous group of pixels corresponding to similar geographic entities.
+              Examples: woodland, dense humid forest, degraded humid forest, other vegetation, etc.
+              It helps also reduce the size of images.</p>
+              <p>At the same time, manual labelling and regrouping of different clusters are performed which
+                lead to reduced number of clusters at the end. It must also be noticed that at this stage, satellite images have been reduced into a single band due to the classification process. When clusters are clearly identified as corresponding to the different forest classes, they proceed to estimation of <strong>area</strong> using GIS software.</p>
+                <p>One issue that has been raised during the training is how to estimate area hidden by cloud as Landsat images
+                  are not free of cloud. Consultants proposed 03 cross-checking approach:</p>
+                  <p>The first is to use expert knowledge who knows the terrain
+                  . Second is to use <a href="https://www.google.com/intl/fr/earth/explore/products/desktop.html">Google earth </a>to check what is actually above cloud by searching their geographic coordinates and last, find an image without cloud
+                  (this last approach is far from possible most of the time).</p>
+              <h3>Mosaicing all images into a single map</h3>
+               <p>After obtaining homogeneous classes by image. They proceed to ensemble all images. It's an important step as Landsat images are segmented into different parts.
+                Mosaicing consists of  blending several  images to form one large radiometrically balanced image so that the boundaries between the original images are not seen (the process is automatically done by the software).</p>
+
+               <h3>Timber volume estimation</h3>
+               <!--<p>Forests are composed of trees which perform photosynthesis.Photosynthesis allows trees to stock CO2 then increase their volume. Growth of volume of a given forest area is called Gross Primary Productivity (GPP).</p> -->
+               <h4>Field survey methodology:</h4>
+               
+               <p>Field survey comes from IEFN 1995 (Inventaire Ecologique Forestier National ~ national ecologic forest inventory). In fact,IEFN methodology relied on Stratified Random Sampling. Forest area have been stratified into homogeneous group (based on pixels density into small-medium-high classes) using satellite image then crosstabulated with forest kinds to get strata .With the help of GIS tools, we are able to calculate area for all strata. An intensity sampling of 1% of the total area is used and multiplied by each strata size to get to area to be surveyed per strata. Depending on the area per strata, a decision is made on which plot size [XxY] (in meter per square) is suitable for by taking into account species available in each strata.
+               </p>
+               <h4>Map linking:</h4>
+               <p> Data points from this survey are geolocalized into the map to estimate volume with the help of <code>linear model(s)</code> and <code>pixel density</code> or <code>NDVI</code> as features.</p>
+               <p>In fact, It should always exist a linear relationship between volume obtained from field survey (IEFN in this case) and density pixel of the map where data points have been plotted. Consultants exploited this linear relation to build a linear model then after predict timber volume on uncovered pixel area. At the end, they covered all Madagascar and obtained a complete estimation of timber volume for the different forest classes. However, sometimes, pixel density may not exhibit linear correlation with timber volume collected. In this case NDVI is used as features to replace density pixel in the linear model.</p>
+               
+              
+          </div><!-- /.blog-post -->
+          <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About me</h4>
+            <p>Herimanitra RANAIVOSON</br>
+               Principal Survey Statistician</br>
+               Data Scientist
+            </p>
+          </div>
+          <div class="sidebar-module">
+            <h4>Archives</h4>
+            <ol class="list-unstyled">
+              <li><a href="#">September 2014</a></li>
+              <li><a href="#">August 2014</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Useful links</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/RanaivosonHerimanitra">GitHub</a></li>
+              <li><a href="https://twitter.com/air_manitra">Twitter</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>powered by bootstrap</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/docs.js"></script>
+    <script src="js/prettify.js"></script>
+    <script src="js/lang-r.js"></script>
+    <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint ";
+    }
+    prettyPrint();
+  </script>
+<div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" 
+    class="global-zeroclipboard-container" 
+    id="global-zeroclipboard-html-bridge">      
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+       id="global-zeroclipboard-flash-bridge" height="100%" width="100%">         
+<param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1406352734117">         
+<param name="allowScriptAccess" value="sameDomain">         
+<param name="scale" value="exactfit">         
+<param name="loop" value="false">         
+<param name="menu" value="false">         
+<param name="quality" value="best">         
+<param name="bgcolor" value="#ffffff">         
+<param name="wmode" value="transparent">         
+<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         
+<embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff"   name="global-zeroclipboard-flash-bridge" 
+allowscriptaccess="sameDomain" 
+allowfullscreen="false" 
+type="application/x-shockwave-flash" 
+wmode="transparent" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" 
+flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com"  scale="exactfit" height="100%" width="100%">                
+</object>
+</div>
+</body>
+</html>
