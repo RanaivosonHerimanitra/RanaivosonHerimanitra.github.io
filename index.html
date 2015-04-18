@@ -15,32 +15,25 @@
   </head>
   <body>
     <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">  <!--beginning of navbar navbar-inverse navbar-fixed-top-->
-      <div class="container"> <!-- beginning of container -->
+      <div class="container-fluid"> <!-- beginning of container -->
         <div class="navbar-header">
           <a class="navbar-brand" href="#">HERIMANITRA</a>
         </div>
-        <div class="collapse navbar-collapse"> <!-- beginning of collapse navbar-collapse class -->
-          <ul class="nav navbar-nav">
-            <li class="active">
-            <a href="https://herimanitra.shinyapps.io/myrcharts0/">
-               rCharts and shiny
-            </a>
-            </li>
-            <li>
-            <a href="https://herimanitra.shinyapps.io/presentation/">
-              Interactive presentation
-            </a>
-            </li>
-            <li>
-            <a href="https://herimanitra.shinyapps.io/collecta/">
-               Facebook (Malagasy only)
-            </a>
-            </li>
-            <li><a href="#about">WAVES</a></li>
-            <li><a href="#about">Econometrics</a></li>
-            <li><a href="#contact">Miscalleneous</a></li>
-          </ul>
-        </div><!-- end of collapse navbar-collapse class -->
+        <!--<div class="collapse navbar-collapse"> <!-- beginning of collapse navbar-collapse class -->
+        <ul class="nav navbar-nav">
+          <li class="active"> <a href="https://herimanitra.shinyapps.io/myrcharts0/">rCharts and shiny</a> </li>             
+          <li><a href="https://herimanitra.shinyapps.io/presentation/">Interactive presentation </a>  </li>         
+          <li><a href="https://herimanitra.shinyapps.io/collecta/">Facebook (Malagasy only) </a>  </li> 
+          <li><a href="waves.html">WAVES</a></li>
+          <li><a href="#about">Econometrics</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Miscalleneous <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="http://rpubs.com/Herimanitra/PL2014">Programmation Linéaire (Ankatso)</a></li>
+              </ul>
+          </li>
+        </ul>
+        <!--</div><!-- end of collapse navbar-collapse class -->
       </div> <!-- end of container -->
     </div> <!-- end of navbar navbar-inverse navbar-fixed-top-->
 
@@ -49,15 +42,14 @@
      <div class="container">  <!-- beginning of class container -->
         <div class="starter-template"> <!-- beginning of class starter-template -->
              <h1>Welcome</h1>
-                 <p class="lead">
+                 <p class="lead  text-center">
                    I'm a Principal Survey Statistician working at 
                    <a href="http://instat.mg">National Institute of Statistics
-                   of Madagascar</a> and 
+                   of Madagascar</a>,
                    <a href="http://www.kaggle.com/users/78367/herimanitra">
-                   Data Scientist</a> during spare time.
-                   This website illustrates my work and portfolios using R and web technologies<br> 
-                   You will find more stuff in the next few months so stay tuned
-                   by following me <a href="https://github.com/RanaivosonHerimanitra">with github
+                   Data Scientist</a> during spare time. I'm also teaching Linear Programming and Survey Sampling Techniques
+                   at the <a href="http://www.univ-antananarivo.mg/">University of Antananarivo</a> with hands-on lab with R. This website showcases some of my work and portfolios using R and web technologies so stay tuned by following me 
+                   <a href="https://github.com/RanaivosonHerimanitra">with github
                    </a> or  <a href="https://twitter.com/air_manitra">on twitter
                    </a></br>
                 </p>
@@ -144,10 +136,10 @@
       </footer>
     
     <!-- Next, previous -->
-    <ul class="pager"> 
+   <!-- <ul class="pager"> 
        <li><a href="#">Previous</a></li> 
        <li><a href="#">Next</a></li> 
-    </ul>
+    </ul> -->
     <script src="js/jquery-1.11.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>

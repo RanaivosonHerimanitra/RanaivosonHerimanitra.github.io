@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
     
-    <title>facebook</title>
+    <title>PCA</title>
 <link href="css/syntax.css" type="text/css" rel="stylesheet" />
 
     <!-- Bootstrap core CSS -->
@@ -36,8 +36,7 @@
     <div class="blog-masthead">
       <div class="container">
         <nav class="blog-nav">
-          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">
-          rCharts and shiny</a>
+          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">       rCharts and shiny</a>
           <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/presentation/">
           Interactive presentation</a>
           <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/collecta/">
@@ -50,60 +49,65 @@
     </div>
     <div class="container">
       <div class="blog-header">
-        <h1 class="blog-title">Manipulate facebook data with R</h1>
-        <p class="lead blog-description">If you need to extract useful information
-          on social network website, this post is for you. </br>
-          I'll tell you my attempt to extract meaningful information 
-          from facebook using R and the facebook API.
-        </p>
-        <p class="blog-post-meta">August 20, 2014 by 
-          <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
-        </p>
+        <h1 class="blog-title">PCA (à la french school)</h1>
+        <p class="lead blog-description">A tutorial</p>
       </div>
       <div class="row">
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
-            <h2 class="blog-post-title">Sign in with the facebook developper interface</h2>        
-            <p>First of all, you need to <a href="https://developers.facebook.com/apps/">sign in</a> to the facebook developer interface to access the graph API.
+            <h2 class="blog-post-title"></h2>
+            <p class="blog-post-meta">March 20, 2015 by 
+            <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-            <blockquote>
-            The Graph API is the primary way to get data in and out of Facebook's social graph. 
-            It's a low-level HTTP-based API that you can use to query data, post new stories, 
-            upload photos and a variety of other tasks that an app might need to do
-            </blockquote>
-            <h2>Create an app</h2>
-            <p>Second, you will need to create an application to extract these information.</p>
-            <p>On the right side of the screen, click on the green <code>Create New app</code> button:</p>
-            <img src="images/developer.png" style="max-height: 700px; max-width: 600px;" />
-            </br>
-            <p>After the app has been created:</p>
-            <ol>
-              <li>Go to settings and fill in<code>Contact Email</code></li>
-              <li>Add a<code>platform</code> and select <code>Website</code></li>
-              <li>Fill in the Site url with <code>http://localhost:1410/</code> then
-                save changes.
-              </li>
-            </ol>
-            <p>To finalize your settings, pick up the <code>app Id</code> and <code>app secret</code> from
-            the app dashboard then paste them into your R script:</p>
-            <pre><code>fbOAuth(app_id="your app id here", 
-                               app_secret="your app secret here", 
-                               extended_permissions = TRUE)
-</code></pre>
-<p>Note that you will need to install and load the <a href="http://cran.r-project.org/web/packages/Rfacebook/">Rfacebook</a> package as It provides a bunch of
-  useful functions to facilitate interaction with the facebook API.
-</p>
-<p>Now your R script is able to communicate with the Graph API of facebook.</p>
-
-            <h2>Case study</h2>
-            <p>I started with <a href="https://herimanitra.shinyapps.io/collecta/">
-            a project</a> that extract all public posts mentionning some of the
-            most known Malagasy politicians then put them into a
-            <a href="http://www.datatables.net/">datatable</a>,
-            posters and their profile pictures are also displayed.
+            <p>Today, we will see how to perform Principal Component Analysis using <CODE>FactoMineR</CODE>package.</p> 
+            
+            <h3>PCA, what is It?</h3>
+            <p>PCA (Principal Component Analysis) is a dimensionality reduction technique aiming to summarize
+              multidimensional information from a dataset consisting of N rows and M columns. It helps also select
+              relevant variables that summarize the dataset.
+              The idea consists of projecting dataset into 2-dimensional subspace that reproduces as most 
+              as possible information from the raw dataset. 
             </p>
-            <p>Enjoy!</p>
-      </div><!-- /.blog-post -->
+            <p>Columns have to be numeric in PCA or transformed into numeric ( using one hot encoding for instance).
+             Qualitative variables can help
+              during the description of principal component axis. Thus, they always put into supplementary or complementary
+              but a numeric variable can also be put into supplementary to help during interpreation.</p>
+            <p>All variables involved in PCA must be normalized ( substract the <strong>mean </strong> and divide by
+              <strong>standard deviation</strong>).
+             </p>
+             <h3>What are we looking for when using PCA?</h3>
+             <p>The goal is twofold:</p>
+             <p>First, we are trying to find out profiles of individuals that are similar in the dataset. 
+              We are particularly interested in what makes these individuals different from others and why they are homogeneous.
+              Similarity between individuals are assessed with usual distance metrics such as Euclidian distance.</p>
+              <p>In addition,we are also interest in finding variables that are linearly "linked" and/or correleted to each other
+                using the <code>coefficient of correlation</code>.</p>
+              <p>In PCA, we always have dual graphics:</p>
+              <ul>
+                <li>Individual or observation graphic which plots position(coordinates) of each observation of the dataset
+                  in a principal component (1st, 2nd, 3rd, etc.).</li>
+                  <li>Correlation circle which represents the correlation between variables and their respective contribution to the
+                    construction of principal components.</li>
+              </ul>
+              <h3>Do you know 
+                <a href="http://cran.r-project.org/web/packages/Factoshiny/index.html"><code>Factoshiny</code></a> package?
+              </h3>
+              <p>It's a new package which performs factorial analysis thanks to 
+                <a href="http://factominer.free.fr/">FactoMineR</a> and <a href="http://shiny.rstudio.com/">Shiny</a>.</p>
+               <p>To illustrate, let's use <code>iris</code> dataset from <code>R</code>:
+               </p>
+               <h4>Individuals factor map:</h4>
+               <img src="images/indfactormap.png" style="max-height: 700px; max-width: 600px;" />
+               <p>First 02 axis explain more than 90% of the variance and the 03 species (setosa,versicolor and virginica) are
+                clearly separated. Furthermore, first axis opposes setosa from the others.</p>
+                <h4>Variables factor map:</h4>
+                <img src="images/varfactormap.png" style="max-height: 700px; max-width: 600px;" />
+                <p>Sepal and petal lengths but also petal width contribute most to the construction of the first axis (they are 
+                  closely correlated from each other).
+                  It may be true that setosa species differ from the other species due to these variables.</p>
+                  <p> If you want to explore iris dataset using PCA with <code>Factoshiny</code>, here is the code:</p>
+                  <pre><code class="r">data(iris)</br>#install.packages("Factoshiny")</br>require(Factoshiny)</br>output=PCAshiny(iris)</code></pre>   
+          </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="#">Previous</a></li>
             <li><a href="#">Next</a></li>
@@ -117,13 +121,18 @@
                Data Scientist
             </p>
           </div>
-         
           <div class="sidebar-module">
-            <h4>Useful resources:</h4>
+            <h4>Archives</h4>
             <ol class="list-unstyled">
-              <li><a href="http://decisionstats.wordpress.com/2014/05/10/analyzing-facebook-networks-using-rstats/">decisionstats</a></li>
-              <li><a href="https://github.com/pablobarbera/Rfacebook">Rfacebook project on GitHub</a></li>
-              
+              <li><a href="#">September 2014</a></li>
+              <li><a href="#">August 2014</a></li>
+            </ol>
+          </div>
+          <div class="sidebar-module">
+            <h4>Useful links</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/RanaivosonHerimanitra">GitHub</a></li>
+              <li><a href="https://twitter.com/air_manitra">Twitter</a></li>
             </ol>
           </div>
         </div><!-- /.blog-sidebar -->
