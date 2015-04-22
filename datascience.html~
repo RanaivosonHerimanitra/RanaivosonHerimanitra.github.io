@@ -56,7 +56,7 @@
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
             <h2 class="blog-post-title"></h2>
-            <p class="blog-post-meta">February 02, 2015 by 
+            <p class="blog-post-meta">02 Mars, 2015 par
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
             <p>Vous disposez d'une masse de données sur vos clients, sur vos ventes, vos factures,
@@ -118,6 +118,10 @@
             Une entreprise qui vend des biens périssables,doit optimiser ses stocks pour ne pas se retrouver 
             en situation de surproduction en période de faible demande ou en rupture de stock en période de fête par exemple.     
             </p>
+            <p>L'automatisation des taches fait gagner du temps à l'entreprise. Par exemple, le <strong>credit scoring</strong>
+              effectue des analyses de risques dont le produit sera de dégager un profil d'individu solvable ou non (si une banque).
+              Cette analyse est importante avant de se lancer dans de nouveaux projets couteux et qui prennent du temps.
+            </p>
           </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="#">Previous</a></li>
@@ -132,17 +136,17 @@
                Data Scientist
             </p>
           </div>
-          <div class="sidebar-module">
+          <!--<div class="sidebar-module">
             <h4>Archives</h4>
             <ol class="list-unstyled">
               <li><a href="#">September 2014</a></li>
               <li><a href="#">August 2014</a></li>
             </ol>
-          </div>
+          </div>-->
           <div class="sidebar-module">
             <h4>Useful links</h4>
             <ol class="list-unstyled">
-              <li><a href="#">GitHub</a></li>
+              <li><a href="http://www.louisdorard.com/blog/data-science-business">9 ways Data science can improve your business</a></li>
               <li><a href="https://twitter.com/air_manitra">Twitter</a></li>
             </ol>
           </div>
