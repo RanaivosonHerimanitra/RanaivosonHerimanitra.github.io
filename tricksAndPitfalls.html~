@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.png">
     
-    <title>WAVES</title>
+    <title>Budget</title>
 <link href="css/syntax.css" type="text/css" rel="stylesheet" />
 
     <!-- Bootstrap core CSS -->
@@ -49,52 +49,42 @@
     </div>
     <div class="container">
       <div class="blog-header">
-        <h1 class="blog-title">Forests area calculation and timber volume estimation in Madagascar</h1>
-        <p class="lead blog-description">Wealth Accounting and the Valuation of Ecosystem Services (WAVES)</p>
+        <h1 class="blog-title">Tricks and pitfalls when designing survey budget</h1>
+        <p class="lead blog-description">In this post, I will walk through step by step on a survey budget
+        design and will show you the case of the upcoming National Survey on Microfinance Demand in Madagascar.</p>
       </div>
       <div class="row">
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
             <h2 class="blog-post-title"></h2>
-            <p class="blog-post-meta">March 25, 2015 by 
+            <p class="blog-post-meta">April 1st, 2015 by 
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-            <p class="text-justify">Recently, I participated in a training organized by <a href="rmsi.com">consultants</a>
-              in charge of estimating timber volume in Madagascar using remote sensing techniques.</p> 
-             <p>First step of their work consisted of collecting and processing large
-              <a href="http://earthexplorer.usgs.gov/">landsat images</a> (36 in total covering period 2005 to 2013).
-             </p>
-             <p class="text-justify">Output of the studies are:</p>
-             <ul>
-              <li>Forest cover land use</li>
-              <li>Change detection of forest cover land use</li>
-              <li>Timber volume estimation using allometric equations (<a href="http://en.wikipedia.org/wiki/Normalized_Difference_Vegetation_Index">NDVI</a>)</li>
-             </ul>
-             <h3>Forest cover land use estimation</h3>
-             <p class="text-justify">They applied <a href="https://www.youtube.com/watch?v=024ogEKpofw"><strong>unsupervised classification</strong></a>  
-              to form homogeneous group of pixels corresponding to similar geographic entities.
-              Examples: woodland, dense humid forest, degraded humid forest, other vegetation, etc.
-              It helps also reduce the size of images.</p>
-              <p class="text-justify">At the same time, manual labelling and regrouping of different clusters are performed which
-                lead to reduced number of clusters at the end. It must also be noticed that at this stage, satellite images have been reduced into a single band due to the classification process. When clusters are clearly identified as corresponding to the different forest classes, they proceed to estimation of <strong>area</strong> using GIS software.</p>
-                <p class="text-justify">One issue that has been raised during the training is how to estimate area hidden by cloud as Landsat images
-                  are not free of cloud. Consultants proposed 03 cross-checking approach:</p>
-                  <p class="text-justify">The first is to use expert knowledge who knows the terrain
-                  . Second is to use <a href="https://www.google.com/intl/fr/earth/explore/products/desktop.html">Google earth </a>to check what is actually above cloud by searching their geographic coordinates and last, find an image without cloud
-                  (this last approach is far from possible most of the time).</p>
-              <h3>Mosaicing all images into a single map</h3>
-               <p class="text-justify">After obtaining homogeneous classes by image. They proceed to ensemble all images. It's an important step as Landsat images are segmented into different parts.
-                Mosaicing consists of  blending several  images to form one large radiometrically balanced image so that the boundaries between the original images are not seen (the process is automatically done by the software).</p>
-
-               <h3>Timber volume estimation</h3>
-               <!--<p>Forests are composed of trees which perform photosynthesis.Photosynthesis allows trees to stock CO2 then increase their volume. Growth of volume of a given forest area is called Gross Primary Productivity (GPP).</p> -->
-               <h4>Field survey methodology:</h4>
-               
-               <p class="text-justify">Field survey comes from IEFN 1995 (Inventaire Ecologique Forestier National ~ national ecologic forest inventory). In fact,IEFN methodology relied on Stratified Random Sampling. Forest area have been stratified into homogeneous group (based on pixels density into small-medium-high classes) using satellite image then crosstabulated with forest kinds to get strata .With the help of GIS tools, they calculated area for all strata. An intensity sampling of 1% of the total area is used and multiplied by each strata size to get to area to be surveyed per strata. Depending on the area per strata, a decision is made on which plot size [XxY] (in meter per square) is suitable for by taking into account species available in each strata.
-               </p>
-               <h4>Map linking:</h4>
-               <p> Data points from this survey are geolocalized into maps (processed by consultants) to estimate volume with the help of <code>linear model(s)</code>. <code>Pixel density</code> or <code>Normalized Difference Vegetation Index (NDVI)</code> are used as features.</p>
-               <p class="text-justify">In fact, It should always exist a linear relationship between volume obtained from field survey (IEFN in this case) and density pixel of the map where data points have been plotted. Consultants exploited this linear relation to build a linear model, then after, predict timber volume on uncovered pixel area. At the end, they covered all Madagascar and obtained a complete estimation of timber volume for the different forest classes. However, sometimes, pixel density may not exhibit linear correlation with timber volume collected. In this case NDVI is used as features to replace density pixel in the linear model.</p>
+            <p>When designing a survey budget , one must take care of 02 main aspects:</p>
+            <ul>
+            <li>The technical budget which shows how the methodology used affects the total budget cost.
+            </li>
+            <li>The non technical budget which embeds all details related to the logistics involved
+            before, during and after the survey.</li>
+            </ul>
+            <p>Technical budget encompasses the way we draw sample and the underlying costs. In the national microfinance
+            survey, we used a systematic random sampling methodology with unequal probabilities sampling to select in total
+            <strong>336 area zones</strong> to be surveyed.</p>
+            <p>For each randomly selected area zone, surveyors have to go on the field then count the number of households. At the end of the count,
+            a predetermined number of <strong>15 households per area zone</strong> are randomly selected using systematic random 
+            sampling with equal probability which makes a sample of <strong>5040 households</strong> across Madagascar.</p>
+            <h2>What costs are involved?</h2>
+            <p>When thinking about the cost, most of the time, we start with the following simple equation:</p>
+           <p class="lead"> <strong>effective data collection duration x Households per day x Number of surveyors = Total number of household to be surveyed </strong></p>
+           <p>From this equation, one can approximately derive the effective duration of data collection which differs from the data collection
+           duration.</p>
+            <p>Area zone are geographically dispersed across the country and costs related to transportation should be
+            considered first. Transportations differ depending on the distance from cities where surveyors come from. Transportation costs
+            are often multiple of the number of human resources involved in data collection: surveyors, controllers, supervisors.</p>
+            <p>However, budget designers should also take care of the fact that cars location may be involved during data collection
+            then they should to include fuel costs per kilometers in their budget. This often introduces unequal cost per human resource
+            . For example, surveyors may not benefit from car location as opposed to supervisors.</p>
+            
                
               
           </div><!-- /.blog-post -->

@@ -59,7 +59,7 @@
             <p class="blog-post-meta">August 1, 2014 by 
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-            <p>rCharts is an R package written by 
+            <p class="text-justify">rCharts is an R package written by 
             <a href="https://github.com/ramnathv/rCharts">Ramnath Vaidyanathan</a> 
                that wraps powerful javascript
                interactive charts libraries. It encompasses highcharts.js , 
@@ -69,7 +69,7 @@
             <p>I'll particularly focus on highcharts.js in this blog because I find 
                it very nice!
             </p>
-            <p>Don't hesitate to explore a complete 
+            <p class="text-justify">Don't hesitate to explore a complete 
                <a href="https://herimanitra.shinyapps.io/myrcharts0/">live examples</a>
                of the tutorial here.
             </p>
@@ -78,7 +78,7 @@
               <p><strong></strong></p>
             </blockquote>-->
             <h2>Installing rCharts</h2>
-            <p>You can install rCharts using the following commands:</p>
+            <p class="text-justify">You can install rCharts using the following commands:</p>
             <pre><code class="r">require(devtools)
 install_github('rCharts', 'ramnathv')</code></pre>
             <p>you may wait a minute as it does not show download progress</p>
@@ -87,8 +87,8 @@ install_github('rCharts', 'ramnathv')</code></pre>
             slightly lower level syntaxes to understand details behind charts.
             </p>
             <h3>Pie chart:</h3>
-            <p>Let's see how to build simple piechart using highcharts.</p>
-            <p>Output displays distribution of species in Iris dataset</p>
+            <p class="text-justify">Let's see how to build simple piechart using highcharts.</p>
+            <p class="text-justify">Output displays distribution of species in Iris dataset</p>
             <ul>
               <li>First, you need to instantiate new highcharts object: 
               <pre><code class="r">a=Highcharts$new()</code></pre>
@@ -106,15 +106,15 @@ y=as.numeric(table(iris$Species))</code></pre>
               </code></pre>
               </li>
             </ul>
-            <p>Finally, specify <code>x-value</code> and <code>y-value</code> 
+            <p class="text-justify">Finally, specify <code>x-value</code> and <code>y-value</code> 
             and the chart type (in this case a pie chart)
             <pre><code>a$data(type='pie',x=x,y=y)</code></pre> then call <code>a</code>
             </p>
             <h4>Multiple lines</h4>
-            <p>Let's see how to build multiple lines using highcharts and
+            <p class="text-justify">Let's see how to build multiple lines using highcharts and
                Iris dataset.
             </p>
-            <p>In this case, multiple lines correspond to <code>sepal length</code>
+            <p class="text-justify">In this case, multiple lines correspond to <code>sepal length</code>
               and <code>sepal width</code> variables for each observation.
             </p>
             <pre><code class="r">a = Highcharts$new()</br>
@@ -123,12 +123,12 @@ a$xAxis(title=list(text="Observations") )</br>
 a$series(name="Sepal width", data= iris$Sepal.width )</br>
 a$series(name="Sepal length", data= iris$Sepal.length )
 </code></pre>
-          <p>You can see from the above code that text in <code>xAxis</code>
+          <p class="text-justify">You can see from the above code that text in <code>xAxis</code>
             can be specified. We have also the <code>series</code> 
             attribute which takes arguments such as <em>name</em> and <em>data</em>.
           </p>
           <h4>Scatter plot</h4>
-          <p>Scatter plot is often used to visualize relationship between 2
+          <p class="text-justify">Scatter plot is often used to visualize relationship between 2
             variables. In this tutorial, we examine correlation between petal and sepal
             length for each of the 3 plant species in Iris dataset.
           </p>
@@ -136,7 +136,7 @@ a$series(name="Sepal length", data= iris$Sepal.length )
             the chart type (scatter). Also, you need to repeat 3-times
             <code>a$data(...)</code> as 3 different scatter plot are involved here.
           </p>
-          <p>One can also define customized color in the <code>color</code>
+          <p class="text-justify">One can also define customized color in the <code>color</code>
             argument of <code>a$data(...)</code>
           </p>
           <pre><code class="r">a = Highcharts$new()</br>
@@ -157,7 +157,7 @@ a$data(name="virginica",x=iris[iris$Species=="virginica","Sepal.Length"],
  <ul>
               <li>The first thing you need to do is to prepare data</li>
 </ul>
-<p>3 regression tasks are conducted for each species then
+<p class="text-justify">3 regression tasks are conducted for each species then
 <code>x-value</code> and <code>fitted values</code> are store withing a list</p>
 <pre><code class="r">
 lm_setosa=lm(Sepal.Length~Petal.Length,data=iris[iris$Species=='setosa',])
@@ -208,10 +208,10 @@ data_virginica=cbind(iris[iris$Species=='virginica',"Petal.Length"],lm_virginica
           y=iris[iris$Species=='virginica',"Sepal.Length"])
     </code></pre>
     <h4>Combo chart</h4>
-    <p>In this example, we will plot an histogram and a line chart
+    <p class="text-justify">In this example, we will plot an histogram and a line chart
       on the same graph.
     </p>
-    <p>We are going to plot the <code>mean of sepal length by species</code>:</p>
+    <p class="text-justify">We are going to plot the <code>mean of sepal length by species</code>:</p>
     <pre><code class="r">
     #data preparation for the mean line:
     x1=mean(iris[iris$Species=='setosa',"Sepal.Length"])

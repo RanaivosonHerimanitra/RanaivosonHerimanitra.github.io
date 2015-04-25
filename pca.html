@@ -59,30 +59,30 @@
             <p class="blog-post-meta">March 20, 2015 by 
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-            <p>Today, we will see how to perform Principal Component Analysis using <CODE>FactoMineR</CODE>package.</p> 
+            <p class="text-justify">Today, we will see how to perform Principal Component Analysis using <CODE>FactoMineR</CODE>package.</p> 
             
             <h3>PCA, what is It?</h3>
-            <p>PCA (Principal Component Analysis) is a dimensionality reduction technique aiming to summarize
+            <p class="text-justify">PCA (Principal Component Analysis) is a dimensionality reduction technique aiming to summarize
               multidimensional information from a dataset consisting of N rows and M columns. It helps also select
               relevant variables that summarize the dataset.
               The idea consists of projecting dataset into 2-dimensional subspace that reproduces as most 
               as possible information from the raw dataset. 
             </p>
-            <p>Columns have to be numeric in PCA or transformed into numeric ( using one hot encoding for instance).
+            <p class="text-justify">Columns have to be numeric in PCA or transformed into numeric ( using one hot encoding for instance).
              Qualitative variables can help
               during the description of principal component axis. Thus, they always put into supplementary or complementary
               but a numeric variable can also be put into supplementary to help during interpreation.</p>
-            <p>All variables involved in PCA must be normalized ( substract the <strong>mean </strong> and divide by
+            <p class="text-justify">All variables involved in PCA must be normalized ( substract the <strong>mean </strong> and divide by
               <strong>standard deviation</strong>).
              </p>
              <h3>What are we looking for when using PCA?</h3>
-             <p>The goal is twofold:</p>
-             <p>First, we are trying to find out profiles of individuals that are similar in the dataset. 
+             <p class="text-justify">The goal is twofold:</p>
+             <p class="text-justify">First, we are trying to find out profiles of individuals that are similar in the dataset. 
               We are particularly interested in what makes these individuals different from others and why they are homogeneous.
               Similarity between individuals are assessed with usual distance metrics such as Euclidian distance.</p>
-              <p>In addition,we are also interest in finding variables that are linearly "linked" and/or correleted to each other
+              <p class="text-justify">In addition,we are also interest in finding variables that are linearly "linked" and/or correleted to each other
                 using the <code>coefficient of correlation</code>.</p>
-              <p>In PCA, we always have dual graphics:</p>
+              <p class="text-justify">In PCA, we always have dual graphics:</p>
               <ul>
                 <li>Individual or observation graphic which plots position(coordinates) of each observation of the dataset
                   in a principal component (1st, 2nd, 3rd, etc.).</li>
@@ -92,9 +92,9 @@
               <h3>Do you know 
                 <a href="http://cran.r-project.org/web/packages/Factoshiny/index.html"><code>Factoshiny</code></a> package?
               </h3>
-              <p>It's a new package which performs factorial analysis thanks to 
+              <p class="text-justify">It's a new package which performs factorial analysis thanks to 
                 <a href="http://factominer.free.fr/">FactoMineR</a> and <a href="http://shiny.rstudio.com/">Shiny</a>.</p>
-               <p>To illustrate, let's use <code>iris</code> dataset from <code>R</code>:
+               <p class="text-justify">To illustrate, let's use <code>iris</code> dataset from <code>R</code>:
                </p>
                <h4>Individuals factor map:</h4>
                <img src="images/indfactormap.png" style="max-height: 700px; max-width: 600px;" />
@@ -102,7 +102,7 @@
                 clearly separated. Furthermore, first axis opposes setosa from the others.</p>
                 <h4>Variables factor map:</h4>
                 <img src="images/varfactormap.png" style="max-height: 700px; max-width: 600px;" />
-                <p>Sepal and petal lengths but also petal width contribute most to the construction of the first axis (they are 
+                <p class="text-justify">Sepal and petal lengths but also petal width contribute most to the construction of the first axis (they are 
                   closely correlated from each other).
                   It may be true that setosa species differ from the other species due to these variables.</p>
                   <p> If you want to explore iris dataset using PCA with <code>Factoshiny</code>, here is the code:</p>

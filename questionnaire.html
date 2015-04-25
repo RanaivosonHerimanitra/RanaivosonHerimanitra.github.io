@@ -52,7 +52,7 @@
         <h2 class="blog-title">Build and host your Mobile questionnaire
           using cutting-edge technologies.
         </h2>
-        <p class="lead blog-description">
+        <p class="lead blog-description text-justify">
         <small>If you are a survey statistician exploring new technologies 
         to speed up data collection, this post is for you. </br>
         I'll tell you about my experience when I had to build a complete 
@@ -70,7 +70,7 @@
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
                      
-            <p>Our user interface will be build using <a href="http://jquerymobile.com/">
+            <p class="text-justify">Our user interface will be build using <a href="http://jquerymobile.com/">
             jQuery Mobile</a>. It is responsive, mobile first framework and easy to learn.
             </p>
             <blockquote>jQuery Mobile is a HTML5-based user interface system 
@@ -78,15 +78,15 @@
             on all smartphone, tablet and desktop devices.
             </blockquote>
             <h2>HTML5 tags</h2>
-            <p>The following tags are useful when building
+            <p class="text-justify">The following tags are useful when building
               a mobile questionnaire:
             </p>
             <h3>Input tag</h3>
-            <p>Input tags are key part of your questionnaire
+            <p class="text-justify">Input tags are key part of your questionnaire
               as most of data you collect have to be
               entered in an input field.
             </p>
-            <p>
+            <p class="text-justify">
             When using an <code>input</code> tag in your html
             remember not to forget its <strong>attributes</strong> 
             such as<code>id, name</code>
@@ -94,12 +94,12 @@
             you want to guide user a little bit.
             </p>
             <h3>select tag</h3>
-            <p>select tags are useful when want to save time
+            <p class="text-justify">select tags are useful when want to save time
               . It assumes that predifined answers are known
               in advance.
             </p>
             <h2>jQuery Mobile template</h2>
-            <p>A typical jQuery mobile page is
+            <p class="text-justify">A typical jQuery mobile page is
               structured into 03 parts:
             </p>
             <ol>
@@ -113,10 +113,10 @@
                 <pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span><span class="na"> data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;p&gt All rights reserved 2014&lt;/p&gt;</span></br><span class="nt">&lt;/div&gt;</span></code></pre>
               </li>
             </ol>
-            <p>These 3 elements are embedded inside a <code>div</code> tag
+            <p class="text-justify">These 3 elements are embedded inside a <code>div</code> tag
               that have a <code>data-role="page"</code> and a unique <code>id</code>.
             </p>
-            <p>Now that you have set up your jQuery mobile page, let's
+            <p class="text-justify">Now that you have set up your jQuery mobile page, let's
               see in details these different elements.
             </p>
             <hr>
@@ -125,7 +125,7 @@
             <p>In this above model, we define an input tag that can receive a maximum
               10 digits and has a type numeric.
             </p>
-            <p>You can control input behavior using <code>events</code> such as:</p>
+            <p class="text-justify">You can control input behavior using <code>events</code> such as:</p>
             <ul>
               <li><code>onkeydown</code></li>
               <li><code>onkeypress</code></li>
@@ -138,7 +138,7 @@
             </p>
             <pre><code class="language-html" data-lang="html"><span class="nt">&lt;input</span> <span class="na">id=</span><span class="s">&quot;myid&quot;</span><span class="na"> maxlength=</span><span class="s">&quot;10&quot;</span><span class="na"> name=</span><span class="s">&quot;myname&quot;</span><span class="na"> type=</span><span class="s">&quot;numeric&quot;</span><span class="na">
             onkeypress=</span><span class="s">&quot;prevent_char(event,'myid');&quot;</span><span class="nt"> /&gt;</span></code></pre>
-            <p><code>prevent_char()</code> is a javascript function that I define
+            <p class="text-justify"><code>prevent_char()</code> is a javascript function that I define
               to prevent user to enter a character from an input tag given its
               <code>id</code> after listening into events triggered by keyboards.
               <pre><code>function prevent_char(event,id) {
@@ -154,7 +154,7 @@
 		$('#'+ id ).val("");	
 	}
 }</code></pre>
-<p>I have also written my own autotabulation in order to improve user experience. I
+<p class="text-justify">I have also written my own autotabulation in order to improve user experience. I
   defined a function called <code>next()</code>:
   <pre><code>function next(name,target,length)
 {
@@ -163,25 +163,25 @@
 		$('#'+target).focus();
 	}
 }</code></pre>
-<p><code>next()</code> takes 03 arguments:</p>
+<p class="text-justify"><code>next()</code> takes 03 arguments:</p>
 <ol>
   <li>the name of the current tag where cursor is located</li>
   <li>the targeted tag</li>
   <li>and the length of the current tag</li>
 </ol>
-<p>You can work exclusively with its<code>id</code> attribute by replacing
+<p class="text-justify">You can work exclusively with its<code>id</code> attribute by replacing
   <code>getElementsByName</code> with <code>getElementsById</code>
 </p>
-</p>
+<!--</p>-->
 <hr>
-<p><code>select</code> tag, on the other hand, has slightly different syntax:</p>
+<p class="text-justify"><code>select</code> tag, on the other hand, has slightly different syntax:</p>
  <pre><code class="language-html" data-lang="html"><span class="nt">&lt;select</span> <span class="na">id=</span><span class="s">&quot;myselecttagid&quot;</span><span class="na"> name=</span><span class="s">&quot;myselecttagname&quot;</span> data-native-menu=false </br>multiple=multiple<span class="nt">&gt;</span>
 <span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;&quot;</span> selected<span class="nt">&gt;&lt;/option&gt;</span>
 <span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;Label1&lt;/option&gt;</span>
 <span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;Label2&lt;/option&gt;</span>
 <span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;Label3&lt;/option&gt;</span>
 <span class="nt">&lt;/select&gt;</span></code></pre>
-<p>This select tag allow you to select more than one item (Label1,Label2,Label3). Depending on your need, you may remove <code>multiple=multiple</code> so that user can only 
+<p class="text-justify">This select tag allow you to select more than one item (Label1,Label2,Label3). Depending on your need, you may remove <code>multiple=multiple</code> so that user can only 
   select one item. To record value, you have 02 options:</p>
 <ul>
   <li>record value(s) based on labels: <pre><code>$('myselecttagid option:selected').text();</code></pre>
@@ -206,12 +206,9 @@ $ cd questionnaire</code></pre>
               normally called <code>questionnaire.html</code>
             </p>
             
-<!--<p>Now , you need to replace generated html file and js file with
-  a template that use jQuery mobile. I recommend you download template provided by
-  <a href="">this link</a>
-</p>-->
+
 <h2>Case Study</h2>
-<p>Let's build a mobile data-entry with 03 variables: <code>name</code>, <code>address</code> and a 
+<p class="text-justify">Let's build a mobile data-entry with 03 variables: <code>name</code>, <code>address</code> and a 
 <code>phone number</code> on single jquery-mobile page:
 </p>
 <p>First, you need to define a meteor <code>template</code> with its name from your html file:</p>
@@ -230,38 +227,28 @@ $ cd questionnaire</code></pre>
             onkeypress=</span><span class="s">&quot;prevent_char(event,'myphoneid');&quot;</span><span class="nt"> /&gt;</span>
 </br><span class="nt">&lt;/div&gt;</span></br><span class="nt">&lt;div</span> <span class="na">data-role=</span><span class="s">&quot;footer&quot;</span><span class="na"> data-position=</span><span class="s">&quot;fixed&quot;</span><span class="nt">&gt;</span></br><span class="nt">&lt;p&gt All rights reserved 2014&lt;/p&gt;</span></br><span class="nt">&lt;/div&gt;</span>
 &lt;/template&gt;</span></code></pre>
-<p>In Meteor, you do not need to specify the html tag, it is automatically managed by the server.</p>
-<p>Furthermore, all contents from <code>template_name</code> is loaded into the <code>body</code>
+<p class="text-justify">In Meteor, you do not need to specify the html tag, it is automatically managed by the server.</p>
+<p class="text-justify">Furthermore, all contents from <code>template_name</code> is loaded into the <code>body</code>
   of the html by specifying <code>{{>template_name}}</code>.
 </p>
-<p>To run this code locally,type:</p>
+<p class="text-justify">To run this code locally,type:</p>
             <pre><code>$ meteor</code></pre>
-            <p>To deploy your app online, pick up a developper account in <a href="http://meteor.com" >Meteor website</a> then, in the command line, type:
+            <p class="text-justify">To deploy your app online, pick up a developper account in <a href="http://meteor.com" >Meteor website</a> then, in the command line, type:
             </p>
             <pre><code>$ meteor deploy <code>NameOfYourApp</code>.meteor.com</p></code></pre>
-            <p>For a complete demo, look at this live example
+            <p class="text-justify">For a complete demo, look at this live example
                <a href="http://herimanitra.meteor.com">here</a>
             </p>
             <h2>Where collected data are stored?</h2>
-            <p>Data are stored in the cloud.</p>
-            <p>They can be retrieved using the command line and from mongoHQ website
+            <p class="text-justify">Data are stored in the cloud.</p>
+            <p class="text-justify">They can be retrieved using the command line and from mongoHQ website
               as data are stored in <code>bson</code> format (the native format of
               mongo database).
             </p>
             <p>To obtain the url, type:</p>
             <pre><code>$ meteor mongo --url <code>NameOfYourApp</code>.meteor.com</code></pre>
             <p>You will then get an address that you have to copy <a href="https://mongohq.com">here</a></p>
-          <!--  <script src="https://gist.github.com/arunoda/4cbf29357ff6547a1608.js">
-</script>
-<pre><code class="language-js">// app.js
-Posts = new Meteor.Collection('posts');
-
-if(Meteor.isClient) {
-  Template.postList.posts = function () {
-    return Posts.find();
-  };
-}
-</code></pre> -->
+          
           </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="http://ranaivosonherimanitra.github.io/index.html">Previous</a></li>

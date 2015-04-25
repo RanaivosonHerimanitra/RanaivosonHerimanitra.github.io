@@ -51,7 +51,7 @@
     <div class="container">
       <div class="blog-header">
         <h1 class="blog-title">Manipulate facebook data with R</h1>
-        <p class="lead blog-description">If you need to extract useful information
+        <p class="lead blog-description text-justify">If you need to extract useful information
           on social network website, this post is for you. </br>
           I'll tell you my attempt to extract meaningful information 
           from facebook using R and the facebook API.
@@ -64,7 +64,7 @@
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
             <h2 class="blog-post-title">Sign in with the facebook developper interface</h2>        
-            <p>First of all, you need to <a href="https://developers.facebook.com/apps/">sign in</a> to the facebook developer interface to access the graph API.
+            <p class="text-justify">First of all, you need to <a href="https://developers.facebook.com/apps/">sign in</a> to the facebook developer interface to access the graph API.
             </p>
             <blockquote>
             The Graph API is the primary way to get data in and out of Facebook's social graph. 
@@ -72,11 +72,11 @@
             upload photos and a variety of other tasks that an app might need to do
             </blockquote>
             <h2>Create an app</h2>
-            <p>Second, you will need to create an application to extract these information.</p>
+            <p class="text-justify">Second, you will need to create an application to extract these information.</p>
             <p>On the right side of the screen, click on the green <code>Create New app</code> button:</p>
             <img src="images/developer.png" style="max-height: 700px; max-width: 600px;" />
             </br>
-            <p>After the app has been created:</p>
+            <p class="text-justify">After the app has been created:</p>
             <ol>
               <li>Go to settings and fill in<code>Contact Email</code></li>
               <li>Add a<code>platform</code> and select <code>Website</code></li>
@@ -84,16 +84,16 @@
                 save changes.
               </li>
             </ol>
-            <p>To finalize your settings, pick up the <code>app Id</code> and <code>app secret</code> from
+            <p class="text-justify">To finalize your settings, pick up the <code>app Id</code> and <code>app secret</code> from
             the app dashboard then paste them into your R script:</p>
             <pre><code>fbOAuth(app_id="your app id here", 
                                app_secret="your app secret here", 
                                extended_permissions = TRUE)
 </code></pre>
-<p>Note that you will need to install and load the <a href="http://cran.r-project.org/web/packages/Rfacebook/">Rfacebook</a> package as It provides a bunch of
+<p class="text-justify">Note that you will need to install and load the <a href="http://cran.r-project.org/web/packages/Rfacebook/">Rfacebook</a> package as It provides a bunch of
   useful functions to facilitate interaction with the facebook API.
 </p>
-<p>Now your R script is able to communicate with the Graph API of facebook.</p>
+<p class="text-justify">Now your R script is able to communicate with the Graph API of facebook.</p>
 
             <h2>Case study</h2>
             <p>I started with <a href="https://herimanitra.shinyapps.io/collecta/">
