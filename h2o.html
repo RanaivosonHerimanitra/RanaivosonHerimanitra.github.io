@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.png">
+    
+    <title>H2o on the cloud</title>
+<link href="css/syntax.css" type="text/css" rel="stylesheet" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog.css" rel="stylesheet">
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  <style type="text/css" id="holderjs-style"></style></head>
+<link href="css/twitter-bootstrap.css" rel="stylesheet" />
+  <body>
+
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="https://herimanitra.shinyapps.io/myrcharts0/">WAVES</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/presentation/">
+          Interactive presentation</a>
+          <a class="blog-nav-item" href="https://herimanitra.shinyapps.io/collecta/">
+          Facebook (Malagasy only)</a>
+          <a class="blog-nav-item" href="#">WAVES</a>
+          <a class="blog-nav-item" href="#">Econometrics</a>
+          <a class="blog-nav-item" href="#">Miscalleneous</a>
+        </nav>
+      </div>
+    </div>
+    <div class="container">
+      <div class="blog-header">
+        <h1 class="blog-title">Playing with your favorite ML algorithm on the cloud (part I)</h1>
+        <p class="lead blog-description">A case study with <a href="http://h2o.ai">h2o</a></p>
+      </div>
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title"></h2>
+            <p class="blog-post-meta">30 october, 2015 by 
+            <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
+            </p>
+            <p class="text-justify">Have a large scale data science project and don't have enough
+              memory (RAM)? h2o and cloud computing platform can help you to be ready within a couple of
+              minutes. In this post, I'll show you my first hands-on experience using h2o
+             and amazon web service together.</p>
+             <p class="text-justify">I assume that you already have an <a href="https://aws.amazon.com">amazon web service account</a>. If not, I encourage you to contact your bank and request for a Visa or MasterCard or whatever providers that allow online payment.<p>
+             <p><a href="http://h2o.ai">h2o</a> is one of my favorite ML tool for <quote>big data</quote> project. It's completely open source, no further installation is needed once you choose an AMI with java already configured like the Amazon Linux AMI (as you can see in the picture below)</p>
+             <br>
+            <img src="images/ami_linux.png" style="max-height: 700px; max-width: 600px;" />
+            <br>
+             <p>After selecting your AMI, you are asked to choose an <a href="https://aws.amazon.com/fr/ec2/instance-types/">instance type</a>. 
+              To avoid billing, I chose a t2.micro instance which is a free tier eligible instance with 1gb of ram you can experiment until you are ready to scale your project.</p>
+              <p>When ready, you can upgrade your instance type to ingest your data flow. For example,
+                m4.4xlarge is an instance type with 64gb of RAM and 16 cores CPU. The magic with instance is that you can create as many as you need and h2o will handle this for you during your model training so your computation will be distributed across nodes (instances) and CPU. This is the distributed computing power of <a href="http://h2o.ai">h2o</a>.
+              </p>
+              <p>At this stage, you may review and launch your instance. Next step is to configure your
+                security rules so that It allows inbound and outbound traffic. Default security group
+                will not allow you to launch h2o from the browser.</p>
+                <p>Here are snapshots of both inbound and outbound traffic I chose:</p>
+                <h2>Inbound</h2>
+                <br>
+                  <img src="images/inbound.png" style="max-height: 600px; max-width: 500px;" />
+                <br>
+                <h2>Outbound</h2>
+                <br>
+                  <img src="images/outbound.png" style="max-height: 600px; max-width: 500px;" />
+                <br>
+              <p>Now that your ec2 instance is fully configured, you can download h2o into it.<p>
+              <p>First, ssh into your instance from your local terminal. Before, be sure your are in the directory of your <code>.pem</code> file you generated during the instance creation wizard then
+                run the following commands:</p>
+              <code>
+                 $ sudo chmod 400 NameOfYourKeyPair.pem
+              </code><br>
+              <code>
+                 $ ssh -i "NameOfYourKeyPair.pem" ec2-user@your-private-dns
+              </code><br>
+              <p>We can get all the details with the amazon dashboard (click on the <code>Actions</code> button then <code>Connect</code>):</p>
+              <img src="images/connect.png" style="max-height: 600px; max-width: 500px;" />
+              <p>At this stage, if everything worked fine, you should be connected to your cloud instance on aws. In the terminal of your instance (which is different from your terminal), run the following commands:</p>
+              <code>
+                $ sudo yum update
+              </code>
+              <p>Download the <a href="http://h2o.ai/download/">file</a> using the <code>wget</code>.
+                Before, you may look at the latest stable version and change the url above:
+              </p>
+              <code>
+                $  wget http://h2o-release.s3.amazonaws.com/h2o/rel-slater/9/h2o-3.2.0.9.zip
+              </code><br>
+              <p>Here you can see the power of cloud computing especially in countries with lower internet connection. The amazon connection is superfast!</p>
+              <p>unzip the file</p>
+              <code>
+                $  unzip h2o-3.2.0.9.zip
+              </code><br>
+              <p>Go to h2o folder:</p>
+              <code>
+                $  cd h2o-3.2.0.9
+              </code>
+              <p>then, launch h2o:</p>
+              <code>
+                $ java -jar h2o.jar
+              </code>
+            <p>Now, h2o is live on the cloud and you can access the flow UI using the url</p>
+            <code> your-public-DNS:54321</code><br>
+            <p>You should then see an user interface like this:</p>
+            <img src="images/flow-ui.png" style="max-height: 600px; max-width: 500px;" />
+
+              <p>Now the power of cloud computing is open to you! 
+                Next time we will dive into details of running distributed
+                algorithms on this instance with h2o (to be continued...)
+              </p>
+          </div><!-- /.blog-post -->
+          <ul class="pager">
+            <li><a href="#">Previous</a></li>
+            <li><a href="#">Next</a></li>
+          </ul>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module sidebar-module-inset">
+            <h4>About me</h4>
+            <p>Herimanitra RANAIVOSON</br>
+               Biostatistician</br>
+               Data Scientist
+            </p>
+          </div>
+          
+          <div class="sidebar-module">
+            <h4>Useful links</h4>
+            <ol class="list-unstyled">
+              <li><a href="https://github.com/RanaivosonHerimanitra">GitHub</a></li>
+              <li><a href="https://twitter.com/air_manitra">Twitter</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+
+      </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <div class="blog-footer">
+      <p>powered by bootstrap</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </div>
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/docs.js"></script>
+    <script src="js/prettify.js"></script>
+    <script src="js/lang-r.js"></script>
+    <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+    <script>
+    var pres = document.getElementsByTagName("pre");
+    for (var i=0; i < pres.length; ++i) {
+      pres[i].className = "prettyprint ";
+    }
+    prettyPrint();
+  </script>
+<div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" 
+    class="global-zeroclipboard-container" 
+    id="global-zeroclipboard-html-bridge">      
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
+       id="global-zeroclipboard-flash-bridge" height="100%" width="100%">         
+<param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1406352734117">         
+<param name="allowScriptAccess" value="sameDomain">         
+<param name="scale" value="exactfit">         
+<param name="loop" value="false">         
+<param name="menu" value="false">         
+<param name="quality" value="best">         
+<param name="bgcolor" value="#ffffff">         
+<param name="wmode" value="transparent">         
+<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         
+<embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff"   name="global-zeroclipboard-flash-bridge" 
+allowscriptaccess="sameDomain" 
+allowfullscreen="false" 
+type="application/x-shockwave-flash" 
+wmode="transparent" 
+pluginspage="http://www.macromedia.com/go/getflashplayer" 
+flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com"  scale="exactfit" height="100%" width="100%">                
+</object>
+</div>
+</body>
+</html>
