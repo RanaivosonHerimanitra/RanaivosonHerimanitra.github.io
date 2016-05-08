@@ -80,7 +80,7 @@
      </div><!-- end of class container -->
     </div><!-- end of class jumbotron -->
     
-    <!-- 2016 posts in a new brand container-fluid-->
+    <!-- 2016 posts in new brand container-fluid-->
     <div class="container-fluid">
       <div class="row">
 
@@ -98,9 +98,9 @@
         </div>
 
         <div class="col-xs-12 col-md-4">
-          <h2>Kickstarter clone </h2>
-              <p>I'm learning fullstack web development using flask, SQLAlchemy and boostrap by cloning Kickstarter website</p>
-               <p><a class="btn btn-primary" href="https://github.com/RanaivosonHerimanitra/punchstarter" role="button">Fork me &raquo;</a>
+          <h2>Cluster randomization in RCT</h2>
+              <p>...</p>
+               <p><a class="btn btn-primary" href="" role="button">Coming soon &raquo;</a>
                </p>
         </div>
 
@@ -133,6 +133,8 @@
                <p><a class="btn btn-primary" href="" role="button">Coming soon &raquo;</a>
                </p>
         </div>
+
+
       </div>
     </div>
     <div class="container-fluid"> <!-- beginning of container fluid -->
@@ -148,7 +150,7 @@
           <h2>Timber volume estimation (WAVES project)</h2>
           <p>Forests area calculation and timber volume estimation in Madagascar...
           </p>
-          <p><a class="btn btn-primary" href="waves.html" role="button">Read more &raquo;</a></p> <!-- 2nd column -->
+          <p><a class="btn btn-primary" href="waves.html" role="button">Coming soon &raquo;</a></p> <!-- 2nd column -->
         </div>
         <div class="col-xs-12 col-md-4">
           <h2>Facebook scraping with R</h2>
