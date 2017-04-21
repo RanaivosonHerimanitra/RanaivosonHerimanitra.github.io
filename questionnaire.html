@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.png">
-    
+
     <title>questionnaire</title>
 <link href="css/syntax.css" type="text/css" rel="stylesheet" />
 
@@ -53,28 +53,28 @@
           using cutting-edge technologies.
         </h2>
         <p class="lead blog-description text-justify">
-        <small>If you are a survey statistician exploring new technologies 
+        <small>If you are a survey statistician exploring new technologies
         to speed up data collection, this post is for you. </br>
-        I'll tell you about my experience when I had to build a complete 
+        I'll tell you about my experience when I had to build a complete
         infrastructure for collecting data with tablets.</br>
         This post assumes that you have a linux or Mac OS installed on your machine.
         </small>
-          
+
         </p>
       </div>
       <div class="row">
         <div class="col-sm-8 blog-main">
           <div class="blog-post">
             <h2 class="blog-post-title">Build your User Interface with jQuery Mobile</h2>
-            <p class="blog-post-meta">August 10, 2014 by 
+            <p class="blog-post-meta">August 10, 2014 by
             <a href="https://github.com/RanaivosonHerimanitra">Herimanitra</a>
             </p>
-                     
+
             <p class="text-justify">Our user interface will be build using <a href="http://jquerymobile.com/">
             jQuery Mobile</a>. It is responsive, mobile first framework and easy to learn.
             </p>
-            <blockquote>jQuery Mobile is a HTML5-based user interface system 
-            designed to make responsive web sites and apps that are accessible 
+            <blockquote>jQuery Mobile is a HTML5-based user interface system
+            designed to make responsive web sites and apps that are accessible
             on all smartphone, tablet and desktop devices.
             </blockquote>
             <h2>HTML5 tags</h2>
@@ -88,7 +88,7 @@
             </p>
             <p class="text-justify">
             When using an <code>input</code> tag in your html
-            remember not to forget its <strong>attributes</strong> 
+            remember not to forget its <strong>attributes</strong>
             such as<code>id, name</code>
             but also<code>placeholder</code> which is useful when
             you want to guide user a little bit.
@@ -143,7 +143,7 @@
               <code>id</code> after listening into events triggered by keyboards.
               <pre><code>function prevent_char(event,id) {
   if ( event.which>64 && event.which <91 ) {
-		$('#' + id).val("");	
+		$('#' + id).val("");
 	}
 }</code></pre>
             </p>
@@ -151,7 +151,7 @@
             </p>
             <pre><code>function prevent_num(event,id) {
   if ( (event.which>48 && event.which <58) || (event.which>96 && event.which <106)  ) {
-		$('#'+ id ).val("");	
+		$('#'+ id ).val("");
 	}
 }</code></pre>
 <p class="text-justify">I have also written my own autotabulation in order to improve user experience. I
@@ -181,7 +181,7 @@
 <span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;2&quot;</span><span class="nt">&gt;Label2&lt;/option&gt;</span>
 <span class="nt">&lt;option</span><span class="na"> value=</span><span class="s">&quot;3&quot;</span><span class="nt">&gt;Label3&lt;/option&gt;</span>
 <span class="nt">&lt;/select&gt;</span></code></pre>
-<p class="text-justify">This select tag allow you to select more than one item (Label1,Label2,Label3). Depending on your need, you may remove <code>multiple=multiple</code> so that user can only 
+<p class="text-justify">This select tag allow you to select more than one item (Label1,Label2,Label3). Depending on your need, you may remove <code>multiple=multiple</code> so that user can only
   select one item. To record value, you have 02 options:</p>
 <ul>
   <li>record value(s) based on labels: <pre><code>$('myselecttagid option:selected').text();</code></pre>
@@ -192,7 +192,7 @@
 </ul>
             <h2>Develop and host with Meteorjs</h2>
             <h3>What is Meteor?</h3>
-            <blockquote>Meteor is an open-source platform for building 
+            <blockquote>Meteor is an open-source platform for building
             top-quality web apps in a fraction of the time.</blockquote>
             <h3>Install Meteor:</h3>
             <p>from the command line, type:</p>
@@ -205,14 +205,14 @@ $ cd questionnaire</code></pre>
             <p>Inside <code>questionnaire</code> folder, edit the html file
               normally called <code>questionnaire.html</code>
             </p>
-            
+
 
 <h2>Case Study</h2>
-<p class="text-justify">Let's build a mobile data-entry with 03 variables: <code>name</code>, <code>address</code> and a 
+<p class="text-justify">Let's build a mobile data-entry with 03 variables: <code>name</code>, <code>address</code> and a
 <code>phone number</code> on single jquery-mobile page:
 </p>
 <p>First, you need to define a meteor <code>template</code> with its name from your html file:</p>
-<pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span><span class="nt">&gt 
+<pre><code class="language-html" data-lang="html"><span class="nt">&lt;body</span><span class="nt">&gt
 {{>template_name}}
 &lt;/body&gt;</span></br>
 <span class="nt">&lt;template</span> <span class="na"> name=</span><span class="s">&quot;template_name&quot</span><span class="nt"> &gt
@@ -248,7 +248,7 @@ $ cd questionnaire</code></pre>
             <p>To obtain the url, type:</p>
             <pre><code>$ meteor mongo --url <code>NameOfYourApp</code>.meteor.com</code></pre>
             <p>You will then get an address that you have to copy <a href="https://mongohq.com">here</a></p>
-          
+            <p>For more advanced and recent projects, have a look at <a href="https://github.com/RanaivosonHerimanitra/annuaire">annuaire</a></p>
           </div><!-- /.blog-post -->
           <ul class="pager">
             <li><a href="http://ranaivosonherimanitra.github.io/index.html">Previous</a></li>
@@ -263,12 +263,12 @@ $ cd questionnaire</code></pre>
                Data Scientist
             </p>
           </div>
-          
+
           <div class="sidebar-module">
             <h4>Useful links</h4>
             <ol class="list-unstyled">
               <li><a href="https://github.com/RanaivosonHerimanitra">GitHub</a></li>
-              <li><a href="https://twitter.com/air_manitra">Twitter</a></li>             
+              <li><a href="https://twitter.com/air_manitra">Twitter</a></li>
             </ol>
           </div>
         </div><!-- /.blog-sidebar -->
@@ -300,27 +300,27 @@ $ cd questionnaire</code></pre>
     }
     prettyPrint();
   </script>
-<div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;" 
-    class="global-zeroclipboard-container" 
-    id="global-zeroclipboard-html-bridge">      
-<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" 
-       id="global-zeroclipboard-flash-bridge" height="100%" width="100%">         
-<param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1406352734117">         
-<param name="allowScriptAccess" value="sameDomain">         
-<param name="scale" value="exactfit">         
-<param name="loop" value="false">         
-<param name="menu" value="false">         
-<param name="quality" value="best">         
-<param name="bgcolor" value="#ffffff">         
-<param name="wmode" value="transparent">         
-<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">         
-<embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff"   name="global-zeroclipboard-flash-bridge" 
-allowscriptaccess="sameDomain" 
-allowfullscreen="false" 
-type="application/x-shockwave-flash" 
-wmode="transparent" 
-pluginspage="http://www.macromedia.com/go/getflashplayer" 
-flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com"  scale="exactfit" height="100%" width="100%">                
+<div style="position: absolute; left: 0px; top: -9999px; width: 15px; height: 15px; z-index: 999999999;"
+    class="global-zeroclipboard-container"
+    id="global-zeroclipboard-html-bridge">
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+       id="global-zeroclipboard-flash-bridge" height="100%" width="100%">
+<param name="movie" value="/assets/flash/ZeroClipboard.swf?noCache=1406352734117">
+<param name="allowScriptAccess" value="sameDomain">
+<param name="scale" value="exactfit">
+<param name="loop" value="false">
+<param name="menu" value="false">
+<param name="quality" value="best">
+<param name="bgcolor" value="#ffffff">
+<param name="wmode" value="transparent">
+<param name="flashvars" value="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com">
+<embed src="ZeroClipboard.swf" loop="false" menu="false" quality="best" bgcolor="#ffffff"   name="global-zeroclipboard-flash-bridge"
+allowscriptaccess="sameDomain"
+allowfullscreen="false"
+type="application/x-shockwave-flash"
+wmode="transparent"
+pluginspage="http://www.macromedia.com/go/getflashplayer"
+flashvars="trustedOrigins=getbootstrap.com%2C%2F%2Fgetbootstrap.com%2Chttp%3A%2F%2Fgetbootstrap.com"  scale="exactfit" height="100%" width="100%">
 </object>
 </div>
 </body>
